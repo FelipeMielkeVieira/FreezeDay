@@ -19,6 +19,7 @@
   "homepage": "https://github.com/FelipeMielkeVieira/FreezeDay#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "kaboom": "^2000.2.9",
     "nodemon": "^2.0.19"
   }
 }
