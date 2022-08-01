@@ -16,6 +16,43 @@ loadSprite("redSlimeD", "/sprites/redSlimeD.png");
 
 scene("nivel1", () => {
     
+    const borderTop = add([
+        "borderTop",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderLeft = add([
+        "borderLeft",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderBottom = add([
+        "borderBottom",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, totalHeight - 10),
+        area(),
+        solid(),
+    ])
+
+    const borderRight = add([
+        "borderRight",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(totalWidth - 10, 0),
+        area(),
+        solid(),
+    ])
+
+
     const redSlime = add([
         "redSlime",
         sprite("redSlimeD"),
@@ -62,7 +99,15 @@ scene("nivel1", () => {
     })
 
     player.onCollide("redSlime", () => {
-        
+        destroyAll("player");
+    })
+
+    player.onCollide("greenSlime", () => {
+        destroyAll("player");
+    })
+
+    player.onCollide("blueSlime", () => {
+        destroyAll("player");
     })
 
 })
