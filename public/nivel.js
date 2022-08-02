@@ -92,8 +92,8 @@ scene("nivel1", () => {
 
     //R3
     add([
-        rect(totalWidth * 0.125, totalHeight * 0.13),
-        pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.43),
+        rect(totalWidth * 0.125, totalHeight * 0.11),
+        pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.443),
         outline(4),
         area(),
         solid(),
@@ -113,7 +113,7 @@ scene("nivel1", () => {
     //R5
     add([
         rect(totalWidth * 0.14, totalHeight * 0.06),
-        pos(totalWidth * 0.045 + 10, totalHeight  * 0.21 - (totalHeight * 0.08)),
+        pos(totalWidth * 0.045 + 10, totalHeight  * 0.19 - (totalHeight * 0.08)),
         outline(4),
         area(),
         solid(),
