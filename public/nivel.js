@@ -1,7 +1,7 @@
 let totalWidth = window.innerWidth * 0.98;
 let totalHeight = window.innerHeight * 0.96;
 
-let speed = 200;
+let speed = 400;
 
 kaboom({
     debug: true,
@@ -227,8 +227,8 @@ scene("nivel1", () => {
     //R1
     add([
         "wall",
-        rect(totalWidth * 0.08, totalHeight * 0.165 - 10),
-        pos(totalWidth * 0.185 - (totalWidth * 0.08) + 10,  totalHeight  * 0.835),
+        rect(totalWidth * 0.1, totalHeight * 0.06),
+        pos(totalWidth * 0.165 - (totalWidth * 0.08) + 10,  totalHeight  * 0.835),
         outline(2),
         area(),
         solid(),
@@ -279,7 +279,7 @@ scene("nivel1", () => {
         color(127, 200, 255)
     ])
 
-    //R6
+    //R61
     add([
         "wall",
         rect(totalWidth * 0.1, totalHeight * 0.06),
@@ -290,7 +290,7 @@ scene("nivel1", () => {
         color(127, 200, 255)
     ])
 
-    //R6
+    //R62
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.45),
@@ -334,7 +334,7 @@ scene("nivel1", () => {
         color(127, 200, 255)
     ])
 
-    //R10
+    //R11
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - 10),
@@ -345,6 +345,17 @@ scene("nivel1", () => {
         color(127, 200, 255)
     ])
 
+    //R12
+    add([
+        "wall",
+        rect((totalWidth * 0.25) / 3, totalHeight  * 0.345),
+        pos(totalWidth * 0.45,  totalHeight * 0.1),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+    
     //R13
     add([
         "wall",
@@ -355,8 +366,6 @@ scene("nivel1", () => {
         solid(),
         color(127, 200, 255)
     ])
-
-    //totalWidth * 0.2 + totalWidth * 0.6  - totalWidth * 0.45
 
     //R14
     add([
@@ -374,6 +383,28 @@ scene("nivel1", () => {
         "wall",
         rect(totalWidth * 0.2, totalHeight  * 0.165),
         pos(totalWidth * 0.6,  totalHeight * 0.73),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R16
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight  * 0.185),
+        pos(totalWidth * 0.75,  totalHeight  * 0.445),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R18
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight  * 0.185),
+        pos(totalWidth * 0.45 + (totalWidth * 0.25) / 3,  totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -409,15 +440,15 @@ scene("nivel1", () => {
     })
 
     player.onCollide("redSlime", () => {
-        destroyAll("player");
+        // destroyAll("player");
     })
 
     player.onCollide("greenSlime", () => {
-        destroyAll("player");
+        // destroyAll("player");
     })
 
     player.onCollide("blueSlime", () => {
-        destroyAll("player");
+        // destroyAll("player");
     })
 
     let gCrystal = false;
