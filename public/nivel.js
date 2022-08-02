@@ -363,7 +363,7 @@ scene("nivel1", () => {
         "wall",
         rect(totalWidth * 0.1, totalHeight  * 0.165),
         pos(totalWidth * 0.45,  totalHeight * 0.73),
-        outline(2),
+        outline(4),
         area(),
         solid(),
         color(127, 200, 255)
