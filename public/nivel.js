@@ -13,11 +13,14 @@ kaboom({
 
 loadSprite("playerD", "/sprites/playerD.png");
 loadSprite("redSlimeD", "/sprites/redSlimeD.png");
+loadSprite("redSlimeR", "/sprites/redSlimeR.png");
+loadSprite("redSlimeU", "/sprites/redSlimeU.png");
+loadSprite("redSlimeL", "/sprites/redSlimeL.png");
 
 scene("nivel1", () => {
 
     const borderTop = add([
-        "borderTop",
+        "wall",
         rect(totalWidth, 10),
         color(0, 0, 0, 0),
         pos(0, 0),
@@ -26,7 +29,7 @@ scene("nivel1", () => {
     ])
 
     const borderLeft = add([
-        "borderLeft",
+        "wall",
         rect(10, totalHeight),
         color(0, 0, 0, 0),
         pos(0, 0),
@@ -35,7 +38,7 @@ scene("nivel1", () => {
     ])
 
     const borderBottom = add([
-        "borderBottom",
+        "wall",
         rect(totalWidth, 10),
         color(0, 0, 0, 0),
         pos(0, totalHeight - 10),
@@ -44,21 +47,12 @@ scene("nivel1", () => {
     ])
 
     const borderRight = add([
-        "borderRight",
+        "wall",
         rect(10, totalHeight),
         color(0, 0, 0, 0),
         pos(totalWidth - 10, 0),
         area(),
         solid(),
-    ])
-
-
-    const redSlime = add([
-        "redSlime",
-        sprite("redSlimeD"),
-        pos(totalWidth * 0.03, totalHeight * 0.05),
-        area(),
-        solid()
     ])
 
     const player = add([
@@ -70,8 +64,43 @@ scene("nivel1", () => {
         scale(1.5)
     ])
 
+    let redSlimeH = -100;
+    let redSlimeV = 0;
+
+    const redSlime = add([
+        "redSlime",
+        sprite("redSlimeR"),
+        pos(totalWidth * 0.03, totalHeight * 0.05),
+        area(),
+        solid()
+    ])
+
+    onUpdate(() => {
+        redSlime.move(redSlimeH, redSlimeV);
+    })
+
+    redSlime.onCollide("wall", () => {
+        let numero = randi(0, 3);
+        if(numero == 0) {
+            if(redSlimeH == 0) {
+                redSlimeH = 100;
+                redSlimeV = 0;
+            } else {
+                redSlimeH = -redSlimeH;
+            }
+        } else {
+            if(redSlimeV == 0) {
+                redSlimeV = 100;
+                redSlimeH = 0;
+            } else {
+                redSlimeV = 0;
+            }
+        }
+    })
+
     //R1
     add([
+        "wall",
         rect(totalWidth * 0.08, totalHeight * 0.15),
         pos(totalWidth * 0.11,  totalHeight - 10 - (totalHeight * 0.15)),
         outline(4),
@@ -82,6 +111,7 @@ scene("nivel1", () => {
 
     //R2
     add([
+        "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
         pos(0 + 10, totalHeight  * 0.65),
         outline(4),
@@ -92,6 +122,7 @@ scene("nivel1", () => {
 
     //R3
     add([
+        "wall",
         rect(totalWidth * 0.125, totalHeight * 0.13),
         pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.43),
         outline(4),
@@ -102,6 +133,7 @@ scene("nivel1", () => {
 
     //R4
     add([
+        "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
         pos(0 + 10, totalHeight  * 0.35 - (totalHeight * 0.08)),
         outline(4),
@@ -112,6 +144,7 @@ scene("nivel1", () => {
 
     //R5
     add([
+        "wall",
         rect(totalWidth * 0.14, totalHeight * 0.06),
         pos(totalWidth * 0.045 + 10, totalHeight  * 0.21 - (totalHeight * 0.08)),
         outline(4),
