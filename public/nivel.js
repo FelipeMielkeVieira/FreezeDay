@@ -72,11 +72,9 @@ scene("nivel1", () => {
 
     const portal = add([
         "portal",
-        "wall",
         sprite("closedPortal"),
         pos(totalWidth * 0.95, totalHeight * 0.05),
         area(),
-        solid()
     ])
 
     const redCrystal = add([
@@ -347,6 +345,19 @@ scene("nivel1", () => {
         color(127, 200, 255)
     ])
 
+    //R13
+    add([
+        "wall",
+        rect(totalWidth * 0.25, totalHeight  * 0.08),
+        pos(totalWidth * 0.45,  totalHeight * 0.55),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //totalWidth * 0.2 + totalWidth * 0.6  - totalWidth * 0.45
+
     //R14
     add([
         "wall",
@@ -361,9 +372,9 @@ scene("nivel1", () => {
     //R15
     add([
         "wall",
-        rect(totalWidth * 0.1, totalHeight  * 0.165),
-        pos(totalWidth * 0.45,  totalHeight * 0.73),
-        outline(4),
+        rect(totalWidth * 0.2, totalHeight  * 0.165),
+        pos(totalWidth * 0.6,  totalHeight * 0.73),
+        outline(2),
         area(),
         solid(),
         color(127, 200, 255)
