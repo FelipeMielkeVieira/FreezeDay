@@ -73,8 +73,9 @@ scene("nivel1", () => {
     const portal = add([
         "portal",
         sprite("closedPortal"),
-        pos(totalWidth * 0.95, totalHeight * 0.05),
+        pos(totalWidth * 0.92, totalHeight * 0.05),
         area(),
+        scale(2)
     ])
 
     const redCrystal = add([
@@ -113,7 +114,8 @@ scene("nivel1", () => {
         sprite("redSlimeD"),
         pos(totalWidth * 0.03, totalHeight * 0.05),
         area(),
-        solid()
+        solid(),
+        scale(1.5)
     ])
 
     const greenSlime = add([
@@ -122,7 +124,8 @@ scene("nivel1", () => {
         sprite("greenSlimeD"),
         pos(totalWidth * 0.95, totalHeight * 0.05),
         area(),
-        solid()
+        solid(),
+        scale(1.5)
     ])
 
     const blueSlime = add([
@@ -131,14 +134,9 @@ scene("nivel1", () => {
         sprite("blueSlimeD"),
         pos(totalWidth * 0.95, totalHeight * 0.90),
         area(),
-        solid()
+        solid(),
+        scale(1.5)
     ])
-
-    onUpdate(() => {
-        redSlime.move(redSlimeH, redSlimeV);
-        greenSlime.move(greenSlimeH, greenSlimeV);
-        blueSlime.move(blueSlimeH, blueSlimeV);
-    })
 
     redSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
@@ -408,15 +406,48 @@ scene("nivel1", () => {
         player.move(0, speed);
     })
 
+    let botaoRefazer;
+
+    function jogadorMorreu() {
+        shake(70);
+        add([
+            text("Game Over!"),
+            pos(totalWidth*0.425, totalHeight*0.36),
+            scale(3),
+            color(255, 0, 0)
+        ])
+        botaoRefazer = add([
+            "botaoRefazer",
+            rect(100, 15),
+            pos(totalWidth*0.4, totalHeight*0.42),
+            scale(3),
+            color(255, 255, 255),
+            outline(1),
+            area()
+        ])
+        add([
+            text("Jogar Novamente"),
+            pos(totalWidth*0.425, totalHeight*0.435),
+            scale(2),
+        ])
+    }
+
+    onClick("botaoRefazer", () => {
+        window.location.reload();
+    })
+
     player.onCollide("redSlime", () => {
+        jogadorMorreu();
         destroyAll("player");
     })
 
     player.onCollide("greenSlime", () => {
+        jogadorMorreu();
         destroyAll("player");
     })
 
     player.onCollide("blueSlime", () => {
+        jogadorMorreu();
         destroyAll("player");
     })
 
@@ -449,6 +480,12 @@ scene("nivel1", () => {
         if(gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
+    })
+
+    onUpdate(() => {
+        redSlime.move(redSlimeH, redSlimeV);
+        greenSlime.move(greenSlimeH, greenSlimeV);
+        blueSlime.move(blueSlimeH, blueSlimeV);
     })
 
 })
