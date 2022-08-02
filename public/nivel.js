@@ -13,9 +13,15 @@ kaboom({
 
 loadSprite("playerD", "/sprites/playerD.png");
 loadSprite("redSlimeD", "/sprites/redSlimeD.png");
-loadSprite("redSlimeR", "/sprites/redSlimeR.png");
-loadSprite("redSlimeU", "/sprites/redSlimeU.png");
-loadSprite("redSlimeL", "/sprites/redSlimeL.png");
+loadSprite("greenSlimeD", "/sprites/greenSlimeD.png");
+loadSprite("blueSlimeD", "/sprites/blueSlimeD.png");
+
+loadSprite("closedPortal", "/sprites/closedPortal.png");
+loadSprite("openPortal", "/sprites/openPortal.png");
+
+loadSprite("redCrystal", "/sprites/redCrystal.png");
+loadSprite("greenCrystal", "/sprites/greenCrystal.png");
+loadSprite("blueCrystal", "/sprites/blueCrystal.png");
 
 scene("nivel1", () => {
 
@@ -64,36 +70,158 @@ scene("nivel1", () => {
         scale(1.5)
     ])
 
-    let redSlimeH = -100;
+    const portal = add([
+        "portal",
+        "wall",
+        sprite("closedPortal"),
+        pos(totalWidth * 0.95, totalHeight * 0.05),
+        area(),
+        solid()
+    ])
+
+    const redCrystal = add([
+        "redCrystal",
+        sprite("redCrystal"),
+        pos(totalWidth * 0.95, totalHeight * 0.80),
+        area()
+    ])
+
+    const blueCrystal = add([
+        "blueCrystal",
+        sprite("blueCrystal"),
+        pos(totalWidth * 0.85, totalHeight * 0.05),
+        area()
+    ])
+
+    const greenCrystal = add([
+        "greenCrystal",
+        sprite("greenCrystal"),
+        pos(totalWidth * 0.10, totalHeight * 0.05),
+        area()
+    ])
+
+    let redSlimeH = -400;
     let redSlimeV = 0;
+
+    let greenSlimeH = -200;
+    let greenSlimeV = 0;
+
+    let blueSlimeH = -300;
+    let blueSlimeV = 0;
 
     const redSlime = add([
         "redSlime",
-        sprite("redSlimeR"),
+        "wall",
+        sprite("redSlimeD"),
         pos(totalWidth * 0.03, totalHeight * 0.05),
+        area(),
+        solid()
+    ])
+
+    const greenSlime = add([
+        "greenSlime",
+        "wall",
+        sprite("greenSlimeD"),
+        pos(totalWidth * 0.95, totalHeight * 0.05),
+        area(),
+        solid()
+    ])
+
+    const blueSlime = add([
+        "blueSlime",
+        "wall",
+        sprite("blueSlimeD"),
+        pos(totalWidth * 0.95, totalHeight * 0.90),
         area(),
         solid()
     ])
 
     onUpdate(() => {
         redSlime.move(redSlimeH, redSlimeV);
+        greenSlime.move(greenSlimeH, greenSlimeV);
+        blueSlime.move(blueSlimeH, blueSlimeV);
     })
 
     redSlime.onCollide("wall", () => {
-        let numero = randi(0, 3);
+        let numero = randi(0, 4);
         if(numero == 0) {
-            if(redSlimeH == 0) {
-                redSlimeH = 100;
-                redSlimeV = 0;
-            } else {
-                redSlimeH = -redSlimeH;
-            }
-        } else {
-            if(redSlimeV == 0) {
-                redSlimeV = 100;
+            if(redSlimeV != 400) {
                 redSlimeH = 0;
-            } else {
+                redSlimeV = -400;
+            }
+        }
+        if(numero == 1) {
+            if(redSlimeH != -400) {
+                redSlimeH = 400;
                 redSlimeV = 0;
+            }
+        }
+        if(numero == 2) {
+            if(redSlimeV != -400) {
+                redSlimeH = 0;
+                redSlimeV = 400;
+            }
+        }
+        if(numero == 3) {
+            if(redSlimeH != 400) {
+                redSlimeH = -400;
+                redSlimeV = 0;
+            }
+        }
+    })
+
+    greenSlime.onCollide("wall", () => {
+        let numero = randi(0, 4);
+        if(numero == 0) {
+            if(greenSlimeV != 200) {
+                greenSlimeH = 0;
+                greenSlimeV = -200;
+            }
+        }
+        if(numero == 1) {
+            if(greenSlimeH != -200) {
+                greenSlimeH = 200;
+                greenSlimeV = 0;
+            }
+        }
+        if(numero == 2) {
+            if(greenSlimeV != -200) {
+                greenSlimeH = 0;
+                greenSlimeV = 200;
+            }
+        }
+        if(numero == 3) {
+            if(greenSlimeH != 200) {
+                greenSlimeH = -200;
+                greenSlimeV = 0;
+            }
+        }
+    })
+
+    blueSlime.onCollide("wall", () => {
+        let numero = randi(0, 4);
+        if(numero == 0) {
+            if(blueSlimeV != 300) {
+                blueSlimeH = 0;
+                blueSlimeV = -300;
+            }
+        }
+        if(numero == 1) {
+            if(blueSlimeH != -300) {
+                blueSlimeH = 300;
+                blueSlimeV = 0;
+            }
+        }
+        if(numero == 2) {
+            if(blueSlimeV != -300) {
+                blueSlimeH = 0;
+                blueSlimeV = 300;
+            }
+        }
+        if(numero == 3) {
+            if(blueSlimeH != 300) {
+                blueSlimeH = -300;
+                blueSlimeV = 0;
             }
         }
     })
@@ -101,9 +229,9 @@ scene("nivel1", () => {
     //R1
     add([
         "wall",
-        rect(totalWidth * 0.08, totalHeight * 0.15),
-        pos(totalWidth * 0.11,  totalHeight - 10 - (totalHeight * 0.15)),
-        outline(4),
+        rect(totalWidth * 0.08, totalHeight * 0.165 - 10),
+        pos(totalWidth * 0.185 - (totalWidth * 0.08) + 10,  totalHeight  * 0.835),
+        outline(2),
         area(),
         solid(),
         color(127, 200, 255)
@@ -113,8 +241,8 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
-        pos(0 + 10, totalHeight  * 0.65),
-        outline(4),
+        pos(10, totalHeight  * 0.65),
+        outline(2),
         area(),
         solid(),
         color(127, 200, 255)
@@ -123,9 +251,9 @@ scene("nivel1", () => {
     //R3
     add([
         "wall",
-        rect(totalWidth * 0.125, totalHeight * 0.13),
-        pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.43),
-        outline(4),
+        rect(totalWidth * 0.125, totalHeight * 0.11),
+        pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.445),
+        outline(2),
         area(),
         solid(),
         color(127, 200, 255)
@@ -135,8 +263,8 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
-        pos(0 + 10, totalHeight  * 0.35 - (totalHeight * 0.08)),
-        outline(4),
+        pos(10, totalHeight  * 0.35 - (totalHeight * 0.08)),
+        outline(2),
         area(),
         solid(),
         color(127, 200, 255)
@@ -146,8 +274,96 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.14, totalHeight * 0.06),
-        pos(totalWidth * 0.045 + 10, totalHeight  * 0.21 - (totalHeight * 0.08)),
-        outline(4),
+        pos(totalWidth * 0.045 + 10, totalHeight  * 0.19 - (totalHeight * 0.08)),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R6
+    add([
+        "wall",
+        rect(totalWidth * 0.1, totalHeight * 0.06),
+        pos(totalWidth * 0.25,  totalHeight  * 0.835),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R6
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight * 0.45),
+        pos(totalWidth * 0.25 + totalWidth * 0.1,  totalHeight  * 0.445),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R7
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight * 0.08),
+        pos(totalWidth * 0.25,  totalHeight  * 0.65),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R8
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight * 0.105),
+        pos(totalWidth * 0.25,  totalHeight  * 0.445),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R9
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - (totalHeight  * 0.19 - (totalHeight * 0.08))),
+        pos(totalWidth * 0.25,  totalHeight  * 0.19 - (totalHeight * 0.08)),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R10
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - 10),
+        pos(totalWidth * 0.25 + totalWidth * 0.1,  10),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R14
+    add([
+        "wall",
+        rect(totalWidth * 0.1, totalHeight  * 0.165),
+        pos(totalWidth * 0.45,  totalHeight * 0.73),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R15
+    add([
+        "wall",
+        rect(totalWidth * 0.1, totalHeight  * 0.165),
+        pos(totalWidth * 0.45,  totalHeight * 0.73),
+        outline(2),
         area(),
         solid(),
         color(127, 200, 255)
@@ -191,6 +407,37 @@ scene("nivel1", () => {
 
     player.onCollide("blueSlime", () => {
         destroyAll("player");
+    })
+
+    let gCrystal = false;
+    let rCrystal = false;
+    let bCrystal = false;
+
+    player.onCollide("greenCrystal", () => {
+        destroyAll("greenCrystal");
+        gCrystal = true;
+        
+        if(gCrystal && rCrystal && bCrystal) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("redCrystal", () => {
+        destroyAll("redCrystal");
+        rCrystal = true;
+        
+        if(gCrystal && rCrystal && bCrystal) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("blueCrystal", () => {
+        destroyAll("blueCrystal");
+        bCrystal = true;
+        
+        if(gCrystal && rCrystal && bCrystal) {
+            portal.use(sprite("openPortal"));
+        }
     })
 
 })
