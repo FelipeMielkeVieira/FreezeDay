@@ -898,4 +898,4 @@ scene("boss1", () => {
     }, 3000);
 })
 
-go("boss1");
+go("nivel1");
