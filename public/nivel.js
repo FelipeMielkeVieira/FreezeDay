@@ -155,6 +155,9 @@ scene("nivel1", () => {
     let redSlimeH = -400;
     let redSlimeV = 0;
 
+    let redSlime2H = -400;
+    let redSlime2V = 0;
+
     let greenSlimeH = -200;
     let greenSlimeV = 0;
 
@@ -164,7 +167,20 @@ scene("nivel1", () => {
     let blueSlimeH = -300;
     let blueSlimeV = 0;
 
+    let blueSlime2H = -300;
+    let blueSlime2V = 0;
+
     const redSlime = add([
+        "redSlime",
+        "wall",
+        sprite("redSlimeD"),
+        pos(totalWidth * 0.03, totalHeight * 0.05),
+        area(),
+        solid(),
+        scale(1.5)
+    ])
+
+    const redSlime2 = add([
         "redSlime",
         "wall",
         sprite("redSlimeD"),
@@ -204,6 +220,16 @@ scene("nivel1", () => {
         scale(1.5)
     ])
 
+    const blueSlime2 = add([
+        "blueSlime",
+        "wall",
+        sprite("blueSlimeD"),
+        pos(totalWidth * 0.95, totalHeight * 0.90),
+        area(),
+        solid(),
+        scale(1.5)
+    ])
+
     redSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
         if (numero == 0) {
@@ -228,6 +254,34 @@ scene("nivel1", () => {
             if (redSlimeH != 400) {
                 redSlimeH = -400;
                 redSlimeV = 0;
+            }
+        }
+    })
+
+    redSlime2.onCollide("wall", () => {
+        let numero = randi(0, 4);
+        if (numero == 0) {
+            if (redSlime2V != 400) {
+                redSlime2H = 0;
+                redSlime2V = -400;
+            }
+        }
+        if (numero == 1) {
+            if (redSlime2H != -400) {
+                redSlime2H = 400;
+                redSlime2V = 0;
+            }
+        }
+        if (numero == 2) {
+            if (redSlime2V != -400) {
+                redSlime2H = 0;
+                redSlime2V = 400;
+            }
+        }
+        if (numero == 3) {
+            if (redSlime2H != 400) {
+                redSlime2H = -400;
+                redSlime2V = 0;
             }
         }
     })
@@ -312,6 +366,34 @@ scene("nivel1", () => {
             if (blueSlimeH != 300) {
                 blueSlimeH = -300;
                 blueSlimeV = 0;
+            }
+        }
+    })
+
+    blueSlime2.onCollide("wall", () => {
+        let numero = randi(0, 4);
+        if (numero == 0) {
+            if (blueSlime2V != 300) {
+                blueSlime2H = 0;
+                blueSlime2V = -300;
+            }
+        }
+        if (numero == 1) {
+            if (blueSlime2H != -300) {
+                blueSlime2H = 300;
+                blueSlime2V = 0;
+            }
+        }
+        if (numero == 2) {
+            if (blueSlime2V != -300) {
+                blueSlime2H = 0;
+                blueSlime2V = 300;
+            }
+        }
+        if (numero == 3) {
+            if (blueSlime2H != 300) {
+                blueSlime2H = -300;
+                blueSlime2V = 0;
             }
         }
     })
@@ -664,11 +746,6 @@ scene("nivel1", () => {
         destroyAll("player");
     })
 
-    player.onCollide("greenSlime2", () => {
-        jogadorMorreu();
-        destroyAll("player");
-    })
-
     player.onCollide("blueSlime", () => {
         jogadorMorreu();
         destroyAll("player");
@@ -713,9 +790,11 @@ scene("nivel1", () => {
 
     onUpdate(() => {
         redSlime.move(redSlimeH, redSlimeV);
+        redSlime2.move(redSlime2H, redSlime2V);
         greenSlime.move(greenSlimeH, greenSlimeV);
         greenSlime2.move(greenSlime2H, greenSlime2V);
         blueSlime.move(blueSlimeH, blueSlimeV);
+        blueSlime2.move(blueSlime2H, blueSlime2V);
     })
 
     const scoreMinutos = add([
