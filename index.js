@@ -23,6 +23,10 @@ app.post("/", async (req, res) => {
   console.log("aaa ", req.body);
   res.json(await crud.criar("jogadores", null, req.body));
 })
+
+app.get("/rankings", function (req,res){
+  res.sendFile(path.join(__dirname, "./public/ranking.html"));
+})
   
 app.listen(3000, () => {
     console.log('App funcionando na porta 3000')
