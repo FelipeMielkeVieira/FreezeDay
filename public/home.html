@@ -7,14 +7,21 @@
     <title>FreezeDay</title>
     <link rel="stylesheet" href="/css/home.css">
 </head>
-<body style="background-image: url('./assets/Fundo.gif');">
-    <div class="modal">
-        <div class="divUsuario">
-            <span>Nome de Usuário:</span>
-            <input type="text" id="nomeUsuario">
+
+<body style="background-image: url('./assets/fundoHome.gif');">
+    <div class="principal">
+        <div class="modal">
+            <b><span class="freezeDay">FreezeDay</span></b>
+            <div class="risco"></div>
+            <div class="divUsuario">
+                <span class="nomeUser">Nome do Jogador:</span>
+                <input type="text" id="nomeUsuario">
+            </div>
+            <div class="botoes">
+                <button class="botaoJogo"><a id="botaoJogar" href="http://localhost:3000/niveis">Jogar</a></button> 
+                <button id="botaoRanking">Ver Ranking</button>
+            </div>
         </div>
-        <a id="botaoJogar" href="http://localhost:3000/niveis">Jogar</a>
-        <button id="botaoRanking">Ver Ranking</button>
     </div>
     <script src="./home.js"></script>
 </body>
