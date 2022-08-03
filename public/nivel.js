@@ -1,7 +1,7 @@
 let totalWidth = window.innerWidth * 0.98;
 let totalHeight = window.innerHeight * 0.96;
 
-let speed = 100;
+let speed = 200;
 
 kaboom({
     debug: true,
