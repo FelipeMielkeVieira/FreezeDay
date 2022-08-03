@@ -144,26 +144,26 @@ scene("nivel1", () => {
 
     redSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(redSlimeV != 400) {
+        if (numero == 0) {
+            if (redSlimeV != 400) {
                 redSlimeH = 0;
                 redSlimeV = -400;
             }
         }
-        if(numero == 1) {
-            if(redSlimeH != -400) {
+        if (numero == 1) {
+            if (redSlimeH != -400) {
                 redSlimeH = 400;
                 redSlimeV = 0;
             }
         }
-        if(numero == 2) {
-            if(redSlimeV != -400) {
+        if (numero == 2) {
+            if (redSlimeV != -400) {
                 redSlimeH = 0;
                 redSlimeV = 400;
             }
         }
-        if(numero == 3) {
-            if(redSlimeH != 400) {
+        if (numero == 3) {
+            if (redSlimeH != 400) {
                 redSlimeH = -400;
                 redSlimeV = 0;
             }
@@ -172,26 +172,26 @@ scene("nivel1", () => {
 
     greenSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(greenSlimeV != 200) {
+        if (numero == 0) {
+            if (greenSlimeV != 200) {
                 greenSlimeH = 0;
                 greenSlimeV = -200;
             }
         }
-        if(numero == 1) {
-            if(greenSlimeH != -200) {
+        if (numero == 1) {
+            if (greenSlimeH != -200) {
                 greenSlimeH = 200;
                 greenSlimeV = 0;
             }
         }
-        if(numero == 2) {
-            if(greenSlimeV != -200) {
+        if (numero == 2) {
+            if (greenSlimeV != -200) {
                 greenSlimeH = 0;
                 greenSlimeV = 200;
             }
         }
-        if(numero == 3) {
-            if(greenSlimeH != 200) {
+        if (numero == 3) {
+            if (greenSlimeH != 200) {
                 greenSlimeH = -200;
                 greenSlimeV = 0;
             }
@@ -200,26 +200,26 @@ scene("nivel1", () => {
 
     blueSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(blueSlimeV != 300) {
+        if (numero == 0) {
+            if (blueSlimeV != 300) {
                 blueSlimeH = 0;
                 blueSlimeV = -300;
             }
         }
-        if(numero == 1) {
-            if(blueSlimeH != -300) {
+        if (numero == 1) {
+            if (blueSlimeH != -300) {
                 blueSlimeH = 300;
                 blueSlimeV = 0;
             }
         }
-        if(numero == 2) {
-            if(blueSlimeV != -300) {
+        if (numero == 2) {
+            if (blueSlimeV != -300) {
                 blueSlimeH = 0;
                 blueSlimeV = 300;
             }
         }
-        if(numero == 3) {
-            if(blueSlimeH != 300) {
+        if (numero == 3) {
+            if (blueSlimeH != 300) {
                 blueSlimeH = -300;
                 blueSlimeV = 0;
             }
@@ -230,7 +230,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.1, totalHeight * 0.06),
-        pos(totalWidth * 0.165 - (totalWidth * 0.08) + 10,  totalHeight  * 0.835),
+        pos(totalWidth * 0.165 - (totalWidth * 0.08) + 10, totalHeight * 0.835),
         outline(2),
         area(),
         solid(),
@@ -241,7 +241,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
-        pos(10, totalHeight  * 0.65),
+        pos(10, totalHeight * 0.65),
         outline(2),
         area(),
         solid(),
@@ -252,7 +252,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.125, totalHeight * 0.11),
-        pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.445),
+        pos((10 + totalWidth * 0.185) * 0.35, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -263,7 +263,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
-        pos(10, totalHeight  * 0.35 - (totalHeight * 0.08)),
+        pos(10, totalHeight * 0.35 - (totalHeight * 0.08)),
         outline(2),
         area(),
         solid(),
@@ -274,7 +274,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.14, totalHeight * 0.06),
-        pos(totalWidth * 0.045 + 10, totalHeight  * 0.19 - (totalHeight * 0.08)),
+        pos(totalWidth * 0.045 + 10, totalHeight * 0.19 - (totalHeight * 0.08)),
         outline(2),
         area(),
         solid(),
@@ -285,7 +285,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.1, totalHeight * 0.06),
-        pos(totalWidth * 0.25,  totalHeight  * 0.835),
+        pos(totalWidth * 0.25, totalHeight * 0.835),
         outline(2),
         area(),
         solid(),
@@ -296,7 +296,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.45),
-        pos(totalWidth * 0.25 + totalWidth * 0.1,  totalHeight  * 0.445),
+        pos(totalWidth * 0.25 + totalWidth * 0.1, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -307,7 +307,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.08),
-        pos(totalWidth * 0.25,  totalHeight  * 0.65),
+        pos(totalWidth * 0.25, totalHeight * 0.65),
         outline(2),
         area(),
         solid(),
@@ -318,7 +318,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.105),
-        pos(totalWidth * 0.25,  totalHeight  * 0.445),
+        pos(totalWidth * 0.25, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -328,8 +328,8 @@ scene("nivel1", () => {
     //R9
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - (totalHeight  * 0.19 - (totalHeight * 0.08))),
-        pos(totalWidth * 0.25,  totalHeight  * 0.19 - (totalHeight * 0.08)),
+        rect(totalWidth * 0.05, totalHeight * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - (totalHeight * 0.19 - (totalHeight * 0.08))),
+        pos(totalWidth * 0.25, totalHeight * 0.19 - (totalHeight * 0.08)),
         outline(2),
         area(),
         solid(),
@@ -339,8 +339,8 @@ scene("nivel1", () => {
     //R11
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - 10),
-        pos(totalWidth * 0.25 + totalWidth * 0.1,  10),
+        rect(totalWidth * 0.05, totalHeight * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - 10),
+        pos(totalWidth * 0.25 + totalWidth * 0.1, 10),
         outline(2),
         area(),
         solid(),
@@ -350,30 +350,30 @@ scene("nivel1", () => {
     //R12
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345),
-        pos(totalWidth * 0.45,  totalHeight * 0.1),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.345),
+        pos(totalWidth * 0.45, totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
         color(127, 200, 255)
     ])
-    
+
     //R13
     add([
         "wall",
-        rect(totalWidth * 0.25, totalHeight  * 0.08),
-        pos(totalWidth * 0.45,  totalHeight * 0.55),
+        rect(totalWidth * 0.25, totalHeight * 0.08),
+        pos(totalWidth * 0.45, totalHeight * 0.55),
         outline(2),
         area(),
         solid(),
         color(127, 200, 255)
-    ]) 
+    ])
 
     //R14
     add([
         "wall",
-        rect(totalWidth * 0.1, totalHeight  * 0.165),
-        pos(totalWidth * 0.45,  totalHeight * 0.73),
+        rect(totalWidth * 0.1, totalHeight * 0.165),
+        pos(totalWidth * 0.45, totalHeight * 0.73),
         outline(2),
         area(),
         solid(),
@@ -383,8 +383,8 @@ scene("nivel1", () => {
     //R15
     add([
         "wall",
-        rect(totalWidth * 0.2, totalHeight  * 0.165),
-        pos(totalWidth * 0.6,  totalHeight * 0.73),
+        rect(totalWidth * 0.2, totalHeight * 0.165),
+        pos(totalWidth * 0.6, totalHeight * 0.73),
         outline(2),
         area(),
         solid(),
@@ -394,8 +394,8 @@ scene("nivel1", () => {
     //R16
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.185),
-        pos(totalWidth * 0.75,  totalHeight  * 0.445),
+        rect(totalWidth * 0.05, totalHeight * 0.185),
+        pos(totalWidth * 0.75, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -405,8 +405,8 @@ scene("nivel1", () => {
     //R17
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345 / 3),
-        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5),  totalHeight  * 0.445 - (totalHeight  * 0.345 / 3)),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.345 / 3),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5), totalHeight * 0.445 - (totalHeight * 0.345 / 3)),
         outline(2),
         area(),
         solid(),
@@ -416,8 +416,8 @@ scene("nivel1", () => {
     //R18
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.43 / 3),
-        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5),  totalHeight * 0.1),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.43 / 3),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5), totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -427,8 +427,8 @@ scene("nivel1", () => {
     //R19
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)),
-        pos(totalWidth * 0.75,  totalHeight * 0.1),
+        rect(totalWidth * 0.05, totalHeight * 0.345 - (totalHeight * 0.345 / 3)),
+        pos(totalWidth * 0.75, totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -469,14 +469,14 @@ scene("nivel1", () => {
         shake(70);
         add([
             text("Game Over!"),
-            pos(totalWidth*0.425, totalHeight*0.36),
+            pos(totalWidth * 0.425, totalHeight * 0.36),
             scale(3),
             color(255, 0, 0)
         ])
         botaoRefazer = add([
             "botaoRefazer",
             rect(100, 15),
-            pos(totalWidth*0.4, totalHeight*0.42),
+            pos(totalWidth * 0.4, totalHeight * 0.42),
             scale(3),
             color(255, 255, 255),
             outline(1),
@@ -484,13 +484,13 @@ scene("nivel1", () => {
         ])
         add([
             text("Jogar Novamente"),
-            pos(totalWidth*0.425, totalHeight*0.435),
+            pos(totalWidth * 0.425, totalHeight * 0.435),
             scale(2),
         ])
     }
 
     onClick("botaoRefazer", () => {
-        window.location.reload();
+        go("nivel1");
     })
 
     player.onCollide("redSlime", () => {
@@ -515,8 +515,8 @@ scene("nivel1", () => {
     player.onCollide("greenCrystal", () => {
         destroyAll("greenCrystal");
         gCrystal = true;
-        
-        if(gCrystal && rCrystal && bCrystal) {
+
+        if (gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
     })
@@ -524,8 +524,8 @@ scene("nivel1", () => {
     player.onCollide("redCrystal", () => {
         destroyAll("redCrystal");
         rCrystal = true;
-        
-        if(gCrystal && rCrystal && bCrystal) {
+
+        if (gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
     })
@@ -533,14 +533,14 @@ scene("nivel1", () => {
     player.onCollide("blueCrystal", () => {
         destroyAll("blueCrystal");
         bCrystal = true;
-        
-        if(gCrystal && rCrystal && bCrystal) {
+
+        if (gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
     })
 
     player.onCollide("portal", () => {
-        if(gCrystal && rCrystal && bCrystal) {
+        if (gCrystal && rCrystal && bCrystal) {
             go("boss1");
         }
     })
@@ -556,6 +556,7 @@ scene("nivel1", () => {
 scene("boss1", () => {
 
     let faseBoss = 1;
+    let vidaBoss = 5;
 
     const borderTop = add([
         "wall",
@@ -635,178 +636,181 @@ scene("boss1", () => {
         sprite("queenSlime1"),
         pos(totalWidth * 0.44, totalHeight * 0.4),
         area(),
-        solid(),
         scale(3)
     ])
 
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.37, totalHeight * 0.4),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.37, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.37, totalHeight * 0.45),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.37, totalHeight * 0.5),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.37, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.4, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.43, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.46, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.49, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.52, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.55, totalHeight * 0.35),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.55, totalHeight * 0.4),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.55, totalHeight * 0.45),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.55, totalHeight * 0.5),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.55, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.4, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.43, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.46, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.49, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.52, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
-    add([
-        "spike",
-        sprite("spike"),
-        pos(totalWidth * 0.55, totalHeight * 0.55),
-        area(),
-        solid(),
-        scale(2)
-    ])
+    function criarEspinhos() {
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.37, totalHeight * 0.4),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.37, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.37, totalHeight * 0.45),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.37, totalHeight * 0.5),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.37, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.4, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.43, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.46, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.49, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.52, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.55, totalHeight * 0.35),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.55, totalHeight * 0.4),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.55, totalHeight * 0.45),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.55, totalHeight * 0.5),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.55, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.4, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.43, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.46, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.49, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.52, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+        add([
+            "spike",
+            sprite("spike"),
+            pos(totalWidth * 0.55, totalHeight * 0.55),
+            area(),
+            solid(),
+            scale(2)
+        ])
+    }
+
+    // criarEspinhos();
 
     let tempoEspinhos = 1;
     let spike1;
@@ -814,14 +818,19 @@ scene("boss1", () => {
     let spike3;
     let spike4;
     let spike5;
+    let spike6;
+    let spike7;
+    let spike8;
+    let spike9;
+    let spike10;
 
     let espinhoAtual;
 
     loop(tempoEspinhos, () => {
         let width = randi(10, totalWidth - 30);
         let height = randi(10, totalHeight - 30);
-        
-        if(!spike1) {
+
+        if (!spike1) {
             spike1 = add([
                 "randomSpike",
                 area(),
@@ -871,14 +880,68 @@ scene("boss1", () => {
                 scale(2)
             ])
             espinhoAtual = 5;
+        } else if (!spike6) {
+            spike6 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+            espinhoAtual = 5;
+        } else if (!spike7) {
+            spike7 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+            espinhoAtual = 5;
+        } else if (!spike8) {
+            spike8 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+            espinhoAtual = 5;
+        } else if (!spike9) {
+            spike9 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+            espinhoAtual = 5;
+        } else if (!spike10) {
+            spike10 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+            espinhoAtual = 5;
         }
     })
 
     setTimeout(() => {
         loop(tempoEspinhos, () => {
+
             let espinho = randi(0, 5);
 
-            if(espinho == 0 && espinhoAtual != 1) {
+            if (faseBoss > 2) {
+                espinho = randi(0, 10);
+            }
+            if (espinho == 0 && espinhoAtual != 1) {
                 destroy(spike1);
                 spike1 = undefined;
             } else if (espinho == 1 && espinhoAtual != 2) {
@@ -890,12 +953,190 @@ scene("boss1", () => {
             } else if (espinho == 3 && espinhoAtual != 4) {
                 destroy(spike4);
                 spike4 = undefined;
-            } else if(espinhoAtual != 5) {
+            } else if (espinho == 4 && espinhoAtual != 5) {
                 destroy(spike5);
+                spike5 = undefined;
+            } else if (espinho == 5 && espinhoAtual != 6) {
+                destroy(spike6);
+                spike5 = undefined;
+            } else if (espinho == 6 && espinhoAtual != 7) {
+                destroy(spike7);
+                spike5 = undefined;
+            } else if (espinho == 7 && espinhoAtual != 8) {
+                destroy(spike8);
+                spike5 = undefined;
+            } else if (espinho == 8 && espinhoAtual != 9) {
+                destroy(spike9);
+                spike5 = undefined;
+            } else if (espinho == 9 && espinhoAtual != 10) {
+                destroy(spike10);
                 spike5 = undefined;
             }
         })
     }, 3000);
+
+    player.onCollide("spike", () => {
+        destroyAll("player");
+        jogadorMorreu();
+    })
+
+    player.onCollide("randomSpike", () => {
+        destroyAll("player");
+        jogadorMorreu();
+    })
+
+    function trocarFase() {
+
+        console.log("trocou")
+        if (faseBoss == 2) {
+            clearInterval(intervalo);
+            criarIntervalo(10000);
+        }
+        if(faseBoss == 3) {
+
+        }
+        if(faseBoss == 4) {
+            clearInterval(intervalo);
+            criarIntervalo(5000);
+            queenSlime.use(sprite("queenSlime2"))
+        }
+        if(faseBoss == 5) {
+            clearInterval(intervalo);
+            criarIntervalo(1000);
+        }
+
+        if (faseBoss == 1) {
+            tempoAtaque = 15;
+        }
+        if (faseBoss == 2) {
+            tempoAtaque = 10;
+        }
+        if (faseBoss == 3) {
+            tempoEspinhos = 0.5;
+        }
+        if (faseBoss == 4) {
+            tempoAtaque = 5;
+            tempoEspinhos = 0.4;
+        }
+        if (faseBoss == 5) {
+            tempoAtaque = 1;
+            tempoEspinhos = 0.25;
+        }
+
+        setTimeout(() => {
+            criarEspinhos();
+        }, 3000)
+    }
+
+    player.onCollide("queenSlime", () => {
+        faseBoss++;
+        vidaBoss--;
+        trocarFase();
+    })
+
+    let botaoRefazer;
+
+    function jogadorMorreu() {
+        shake(70);
+        add([
+            text("Game Over!"),
+            pos(totalWidth * 0.425, totalHeight * 0.36),
+            scale(3),
+            color(255, 0, 0)
+        ])
+        botaoRefazer = add([
+            "botaoRefazer",
+            rect(100, 15),
+            pos(totalWidth * 0.4, totalHeight * 0.42),
+            scale(3),
+            color(255, 255, 255),
+            outline(1),
+            area()
+        ])
+        add([
+            text("Jogar Novamente"),
+            pos(totalWidth * 0.425, totalHeight * 0.435),
+            scale(2),
+        ])
+    }
+
+    onClick("botaoRefazer", () => {
+        clearInterval(intervalo);
+        destroyAll("player");
+        destroyAll("spike");
+        destroyAll("queenSlime");
+        go("boss1");
+    })
+
+    let botaoVoltar;
+
+    function vitoria() {
+        add([
+            text("Vitoria!"),
+            pos(totalWidth * 0.425, totalHeight * 0.36),
+            scale(3),
+            color(255, 0, 0)
+        ])
+        botaoVoltar = add([
+            "botaoRefazer",
+            rect(100, 15),
+            pos(totalWidth * 0.4, totalHeight * 0.42),
+            scale(3),
+            color(255, 255, 255),
+            outline(1),
+            area()
+        ])
+        add([
+            text("Voltar ao Inicio"),
+            pos(totalWidth * 0.425, totalHeight * 0.435),
+            scale(2),
+        ])
+    }
+
+    onUpdate(() => {
+        if (vidaBoss <= 0) {
+            vitoria();
+            destroyAll("spike");
+            clearInterval(intervalo)
+            vidaBoss = 1;
+        }
+    })
+
+    let intervalo;
+
+    function criarIntervalo(tempo) {
+        intervalo = setInterval(() => {
+            let bombSpike = add([
+                "bombSpike",
+                sprite("spike"),
+                pos(totalWidth * 0.47, totalHeight * 0.45),
+                area(),
+                solid(),
+                scale(2),
+                move(player.pos.angle(totalWidth * 0.47, totalHeight * 0.45), 200)
+            ])
+    
+            bombSpike.onCollide("spike", (spike) => {
+                destroy(spike);
+            })
+    
+            bombSpike.onCollide("randomSpike", (randomSpike) => {
+                destroy(randomSpike);
+            })
+    
+            bombSpike.onCollide("wall", () => {
+                destroy(bombSpike);
+            })
+    
+            bombSpike.onCollide("player", () => {
+                destroyAll("player");
+                jogadorMorreu();
+            })
+        }, tempo)
+    }
+
+    criarIntervalo(15000);
+    criarEspinhos();
 })
 
 go("nivel1");
