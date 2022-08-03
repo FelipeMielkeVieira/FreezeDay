@@ -27,7 +27,40 @@ loadSprite("queenSlime1", "/sprites/queenSlime.png");
 loadSprite("queenSlime2", "/sprites/queenSlime2.png");
 loadSprite("spike", "/sprites/spike.png");
 
+
+
+let scoreSeg = 0;
+let scoreMin = 0;
+
+
+
+async function init(){
+    let bgImage = await loadSprite("background", "https://st3.depositphotos.com/5479200/13537/i/600/depositphotos_135371314-stock-photo-cartoon-winter-landscape-with-ice.jpg");
+
+    let background = add([
+        sprite("background"),
+        pos(width() / 2, height() / 2),
+        origin("center"),
+        scale(1),
+        fixed(),
+        layer("1")
+      
+    ]);
+   
+    background.scaleTo(Math.max(
+        totalWidth / bgImage.tex.width,
+        totalHeight / bgImage.tex.height
+    ));
+}
+
 scene("nivel1", () => {
+
+    layers ([
+        "1",
+        "2"
+    ], "2")
+
+    init();
 
     const borderTop = add([
         "wall",
@@ -109,6 +142,9 @@ scene("nivel1", () => {
     let greenSlimeH = -200;
     let greenSlimeV = 0;
 
+    let greenSlime2H = -200;
+    let greenSlime2V = 0;
+
     let blueSlimeH = -300;
     let blueSlimeV = 0;
 
@@ -123,6 +159,16 @@ scene("nivel1", () => {
     ])
 
     const greenSlime = add([
+        "greenSlime",
+        "wall",
+        sprite("greenSlimeD"),
+        pos(totalWidth * 0.95, totalHeight * 0.05),
+        area(),
+        solid(),
+        scale(1.5)
+    ])
+
+    const greenSlime2 = add([
         "greenSlime",
         "wall",
         sprite("greenSlimeD"),
@@ -194,6 +240,34 @@ scene("nivel1", () => {
             if (greenSlimeH != 200) {
                 greenSlimeH = -200;
                 greenSlimeV = 0;
+            }
+        }
+    })
+
+    greenSlime2.onCollide("wall", () => {
+        let numero = randi(0, 4);
+        if(numero == 0) {
+            if(greenSlime2V != 200) {
+                greenSlime2H = 0;
+                greenSlime2V = -200;
+            }
+        }
+        if(numero == 1) {
+            if(greenSlime2H != -200) {
+                greenSlime2H = 200;
+                greenSlime2V = 0;
+            }
+        }
+        if(numero == 2) {
+            if(greenSlime2V != -200) {
+                greenSlime2H = 0;
+                greenSlime2V = 200;
+            }
+        }
+        if(numero == 3) {
+            if(greenSlime2H != 200) {
+                greenSlime2H = -200;
+                greenSlime2V = 0;
             }
         }
     })
@@ -394,8 +468,13 @@ scene("nivel1", () => {
     //R16
     add([
         "wall",
+
+        rect(totalWidth * 0.05, totalHeight  * 0.185),
+        pos(totalWidth * 0.75, totalHeight  * 0.445),
+
         rect(totalWidth * 0.05, totalHeight * 0.185),
         pos(totalWidth * 0.75, totalHeight * 0.445),
+
         outline(2),
         area(),
         solid(),
@@ -429,6 +508,72 @@ scene("nivel1", () => {
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.345 - (totalHeight * 0.345 / 3)),
         pos(totalWidth * 0.75, totalHeight * 0.1),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R20
+    add([
+        "wall",
+        rect((totalWidth * 0.25) / 5, totalHeight  * 0.43 / 6 + totalHeight * 0.1),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5 * 3),  10),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R21
+    add([
+        "wall",
+        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345 / 3),
+        pos((totalWidth * 0.25) / 5 + totalWidth * 0.45,  totalHeight  * 0.445 - (totalHeight  * 0.345 / 3)),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R22
+    add([
+        "wall",
+        rect((totalWidth * 0.2 / 2) - 10, (totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)) / 4),
+        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 2), ((totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)) / 4) + totalHeight * 0.1),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R23
+    add([
+        "wall",
+        rect(totalWidth * 0.2 / 4 * 2 - totalWidth * 0.01, totalHeight  * 0.2),
+        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 4) + totalWidth * 0.01 - 10,  ((totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)) / 4) * 3.5 + totalHeight * 0.1),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R24
+    add([
+        "wall",
+        rect((totalWidth * 0.2 / 4), totalHeight  * 0.1),
+        pos(totalWidth - ((totalWidth * 0.2 / 4)) - 10, totalHeight  * 0.63),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R25
+    add([
+        "wall",
+        rect((totalWidth * 0.2 / 4 * 2 - totalWidth * 0.01) / 3, totalHeight  * 0.165),
+        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 4), totalHeight  * 0.73),
         outline(2),
         area(),
         solid(),
@@ -503,6 +648,11 @@ scene("nivel1", () => {
         destroyAll("player");
     })
 
+    player.onCollide("greenSlime2", () => {
+        jogadorMorreu();
+        destroyAll("player");
+    })
+
     player.onCollide("blueSlime", () => {
         jogadorMorreu();
         destroyAll("player");
@@ -548,8 +698,47 @@ scene("nivel1", () => {
     onUpdate(() => {
         redSlime.move(redSlimeH, redSlimeV);
         greenSlime.move(greenSlimeH, greenSlimeV);
+        greenSlime2.move(greenSlime2H, greenSlime2V);
         blueSlime.move(blueSlimeH, blueSlimeV);
     })
+
+    const scoreMinutos = add([
+        text(scoreMin),
+        pos(13, 24)
+    ]);
+
+    const scoreSegundos = add([
+        text(scoreSeg),
+        pos(55, 24)
+    ]);
+
+    const doisPontos = add([
+        text(" : "),
+        pos(17, 24)
+    ]);
+
+    const textoMin = add([
+        text("Min"),
+        pos(24, 24)
+    ]);
+
+    const textoSeg = add([
+        text("s"),
+        pos(75, 24)
+    ]);
+
+    loop(1, () => {
+
+        if (scoreSeg < 60) {
+            scoreSeg++;
+        } else {
+            scoreSeg = 0;
+            scoreMin++;
+        }
+
+        scoreMinutos.text = scoreMin;
+        scoreSegundos.text = scoreSeg;
+    });
 
 })
 
@@ -557,6 +746,44 @@ scene("boss1", () => {
 
     let faseBoss = 1;
     let vidaBoss = 5;
+
+    const scoreMinutos = add([
+        text(scoreMin),
+        pos(13, 24)
+    ]);
+
+    const scoreSegundos = add([
+        text(scoreSeg),
+        pos(55, 24)
+    ]);
+
+    const doisPontos = add([
+        text(" : "),
+        pos(17, 24)
+    ]);
+
+    const textoMin = add([
+        text("Min"),
+        pos(24, 24)
+    ]);
+
+    const textoSeg = add([
+        text("s"),
+        pos(75, 24)
+    ]);
+
+    loop(1, () => {
+        
+        if (scoreSeg < 60) {
+            scoreSeg++;
+        } else {
+            scoreSeg = 0;
+            scoreMin++;
+        }
+
+        scoreMinutos.text = scoreMin;
+        scoreSegundos.text = scoreSeg;
+    });
 
     const borderTop = add([
         "wall",
