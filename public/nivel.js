@@ -28,13 +28,11 @@ loadSprite("queenSlime2", "/sprites/queenSlime2.png");
 loadSprite("spike", "/sprites/spike.png");
 
 
-
 let scoreSeg = 0;
 let scoreMin = 0;
 
 
-
-async function init(){
+async function backgroundFase(){
     let bgImage = await loadSprite("background", "https://st3.depositphotos.com/5479200/13537/i/600/depositphotos_135371314-stock-photo-cartoon-winter-landscape-with-ice.jpg");
 
     let background = add([
@@ -53,6 +51,24 @@ async function init(){
     ));
 }
 
+async function backgroundBoss(){
+    let bgImageBoss = await loadSprite("backgroundBoss", "https://media.istockphoto.com/vectors/cartoon-winter-landscape-with-ice-snow-and-cloudy-sky-vector-vector-id613905532?k=20&m=613905532&s=170667a&w=0&h=6aCruDX9brh5WNFHt_mbMTt-SvBXjYeRjni3gQ6vtk8=");
+
+    let background = add([
+        sprite("backgroundBoss"),
+        pos(width() / 2, height() / 2),
+        origin("center"),
+        scale(1),
+        fixed(),
+        layer("1")
+    ]);
+   
+    background.scaleTo(Math.max(
+        totalWidth / bgImageBoss.tex.width,
+        totalHeight / bgImageBoss.tex.height
+    ));
+}
+
 scene("nivel1", () => {
 
     layers ([
@@ -60,7 +76,7 @@ scene("nivel1", () => {
         "2"
     ], "2")
 
-    init();
+    backgroundFase();
 
     const borderTop = add([
         "wall",
@@ -703,28 +719,31 @@ scene("nivel1", () => {
     })
 
     const scoreMinutos = add([
-        text(scoreMin),
+        text(scoreMin,{
+            size:15
+        }),
         pos(13, 24)
     ]);
 
     const scoreSegundos = add([
-        text(scoreSeg),
-        pos(55, 24)
-    ]);
-
-    const doisPontos = add([
-        text(" : "),
-        pos(17, 24)
+        text(scoreSeg, {
+            size:15
+        }),
+        pos(90, 24)
     ]);
 
     const textoMin = add([
-        text("Min"),
-        pos(24, 24)
+        text("Min",{
+            size:15
+        }),
+        pos(40, 24)
     ]);
 
     const textoSeg = add([
-        text("s"),
-        pos(75, 24)
+        text("s",{
+            size:15
+        }),
+        pos(115, 24)
     ]);
 
     loop(1, () => {
@@ -744,32 +763,42 @@ scene("nivel1", () => {
 
 scene("boss1", () => {
 
+    layers ([
+        "1",
+        "2"
+    ], "2")
+
+    backgroundBoss();
+
     let faseBoss = 1;
     let vidaBoss = 5;
 
     const scoreMinutos = add([
-        text(scoreMin),
+        text(scoreMin,{
+            size:15
+        }),
         pos(13, 24)
     ]);
 
     const scoreSegundos = add([
-        text(scoreSeg),
-        pos(55, 24)
-    ]);
-
-    const doisPontos = add([
-        text(" : "),
-        pos(17, 24)
+        text(scoreSeg,{
+            size:15
+        }),
+        pos(90, 24)
     ]);
 
     const textoMin = add([
-        text("Min"),
-        pos(24, 24)
+        text("Min",{
+            size:15
+        }),
+        pos(40, 24)
     ]);
 
     const textoSeg = add([
-        text("s"),
-        pos(75, 24)
+        text("s",{
+            size:15
+        }),
+        pos(115, 24)
     ]);
 
     loop(1, () => {
