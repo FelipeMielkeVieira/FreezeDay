@@ -27,7 +27,40 @@ loadSprite("queenSlime1", "/sprites/queenSlime.png");
 loadSprite("queenSlime2", "/sprites/queenSlime2.png");
 loadSprite("spike", "/sprites/spike.png");
 
+
+
+let scoreSeg = 0;
+let scoreMin = 0;
+
+
+
+async function init(){
+    let bgImage = await loadSprite("background", "https://st3.depositphotos.com/5479200/13537/i/600/depositphotos_135371314-stock-photo-cartoon-winter-landscape-with-ice.jpg");
+
+    let background = add([
+        sprite("background"),
+        pos(width() / 2, height() / 2),
+        origin("center"),
+        scale(1),
+        fixed(),
+        layer("1")
+      
+    ]);
+   
+    background.scaleTo(Math.max(
+        totalWidth / bgImage.tex.width,
+        totalHeight / bgImage.tex.height
+    ));
+}
+
 scene("nivel1", () => {
+
+    layers ([
+        "1",
+        "2"
+    ], "2")
+
+    init();
 
     const borderTop = add([
         "wall",
@@ -157,26 +190,26 @@ scene("nivel1", () => {
 
     redSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(redSlimeV != 400) {
+        if (numero == 0) {
+            if (redSlimeV != 400) {
                 redSlimeH = 0;
                 redSlimeV = -400;
             }
         }
-        if(numero == 1) {
-            if(redSlimeH != -400) {
+        if (numero == 1) {
+            if (redSlimeH != -400) {
                 redSlimeH = 400;
                 redSlimeV = 0;
             }
         }
-        if(numero == 2) {
-            if(redSlimeV != -400) {
+        if (numero == 2) {
+            if (redSlimeV != -400) {
                 redSlimeH = 0;
                 redSlimeV = 400;
             }
         }
-        if(numero == 3) {
-            if(redSlimeH != 400) {
+        if (numero == 3) {
+            if (redSlimeH != 400) {
                 redSlimeH = -400;
                 redSlimeV = 0;
             }
@@ -185,26 +218,26 @@ scene("nivel1", () => {
 
     greenSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(greenSlimeV != 200) {
+        if (numero == 0) {
+            if (greenSlimeV != 200) {
                 greenSlimeH = 0;
                 greenSlimeV = -200;
             }
         }
-        if(numero == 1) {
-            if(greenSlimeH != -200) {
+        if (numero == 1) {
+            if (greenSlimeH != -200) {
                 greenSlimeH = 200;
                 greenSlimeV = 0;
             }
         }
-        if(numero == 2) {
-            if(greenSlimeV != -200) {
+        if (numero == 2) {
+            if (greenSlimeV != -200) {
                 greenSlimeH = 0;
                 greenSlimeV = 200;
             }
         }
-        if(numero == 3) {
-            if(greenSlimeH != 200) {
+        if (numero == 3) {
+            if (greenSlimeH != 200) {
                 greenSlimeH = -200;
                 greenSlimeV = 0;
             }
@@ -241,26 +274,26 @@ scene("nivel1", () => {
 
     blueSlime.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(blueSlimeV != 300) {
+        if (numero == 0) {
+            if (blueSlimeV != 300) {
                 blueSlimeH = 0;
                 blueSlimeV = -300;
             }
         }
-        if(numero == 1) {
-            if(blueSlimeH != -300) {
+        if (numero == 1) {
+            if (blueSlimeH != -300) {
                 blueSlimeH = 300;
                 blueSlimeV = 0;
             }
         }
-        if(numero == 2) {
-            if(blueSlimeV != -300) {
+        if (numero == 2) {
+            if (blueSlimeV != -300) {
                 blueSlimeH = 0;
                 blueSlimeV = 300;
             }
         }
-        if(numero == 3) {
-            if(blueSlimeH != 300) {
+        if (numero == 3) {
+            if (blueSlimeH != 300) {
                 blueSlimeH = -300;
                 blueSlimeV = 0;
             }
@@ -271,7 +304,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.1, totalHeight * 0.06),
-        pos(totalWidth * 0.165 - (totalWidth * 0.08) + 10,  totalHeight  * 0.835),
+        pos(totalWidth * 0.165 - (totalWidth * 0.08) + 10, totalHeight * 0.835),
         outline(2),
         area(),
         solid(),
@@ -282,7 +315,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
-        pos(10, totalHeight  * 0.65),
+        pos(10, totalHeight * 0.65),
         outline(2),
         area(),
         solid(),
@@ -293,7 +326,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.125, totalHeight * 0.11),
-        pos((10 + totalWidth * 0.185) * 0.35, totalHeight  * 0.445),
+        pos((10 + totalWidth * 0.185) * 0.35, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -304,7 +337,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.185, totalHeight * 0.08),
-        pos(10, totalHeight  * 0.35 - (totalHeight * 0.08)),
+        pos(10, totalHeight * 0.35 - (totalHeight * 0.08)),
         outline(2),
         area(),
         solid(),
@@ -315,7 +348,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.14, totalHeight * 0.06),
-        pos(totalWidth * 0.045 + 10, totalHeight  * 0.19 - (totalHeight * 0.08)),
+        pos(totalWidth * 0.045 + 10, totalHeight * 0.19 - (totalHeight * 0.08)),
         outline(2),
         area(),
         solid(),
@@ -326,7 +359,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.1, totalHeight * 0.06),
-        pos(totalWidth * 0.25,  totalHeight  * 0.835),
+        pos(totalWidth * 0.25, totalHeight * 0.835),
         outline(2),
         area(),
         solid(),
@@ -337,7 +370,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.45),
-        pos(totalWidth * 0.25 + totalWidth * 0.1,  totalHeight  * 0.445),
+        pos(totalWidth * 0.25 + totalWidth * 0.1, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -348,7 +381,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.08),
-        pos(totalWidth * 0.25,  totalHeight  * 0.65),
+        pos(totalWidth * 0.25, totalHeight * 0.65),
         outline(2),
         area(),
         solid(),
@@ -359,7 +392,7 @@ scene("nivel1", () => {
     add([
         "wall",
         rect(totalWidth * 0.05, totalHeight * 0.105),
-        pos(totalWidth * 0.25,  totalHeight  * 0.445),
+        pos(totalWidth * 0.25, totalHeight * 0.445),
         outline(2),
         area(),
         solid(),
@@ -369,8 +402,8 @@ scene("nivel1", () => {
     //R9
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - (totalHeight  * 0.19 - (totalHeight * 0.08))),
-        pos(totalWidth * 0.25,  totalHeight  * 0.19 - (totalHeight * 0.08)),
+        rect(totalWidth * 0.05, totalHeight * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - (totalHeight * 0.19 - (totalHeight * 0.08))),
+        pos(totalWidth * 0.25, totalHeight * 0.19 - (totalHeight * 0.08)),
         outline(2),
         area(),
         solid(),
@@ -380,8 +413,8 @@ scene("nivel1", () => {
     //R11
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - 10),
-        pos(totalWidth * 0.25 + totalWidth * 0.1,  10),
+        rect(totalWidth * 0.05, totalHeight * 0.35 - (totalHeight * 0.08) + totalHeight * 0.08 - 10),
+        pos(totalWidth * 0.25 + totalWidth * 0.1, 10),
         outline(2),
         area(),
         solid(),
@@ -391,30 +424,30 @@ scene("nivel1", () => {
     //R12
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345),
-        pos(totalWidth * 0.45,  totalHeight * 0.1),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.345),
+        pos(totalWidth * 0.45, totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
         color(127, 200, 255)
     ])
-    
+
     //R13
     add([
         "wall",
-        rect(totalWidth * 0.25, totalHeight  * 0.08),
-        pos(totalWidth * 0.45,  totalHeight * 0.55),
+        rect(totalWidth * 0.25, totalHeight * 0.08),
+        pos(totalWidth * 0.45, totalHeight * 0.55),
         outline(2),
         area(),
         solid(),
         color(127, 200, 255)
-    ]) 
+    ])
 
     //R14
     add([
         "wall",
-        rect(totalWidth * 0.1, totalHeight  * 0.165),
-        pos(totalWidth * 0.45,  totalHeight * 0.73),
+        rect(totalWidth * 0.1, totalHeight * 0.165),
+        pos(totalWidth * 0.45, totalHeight * 0.73),
         outline(2),
         area(),
         solid(),
@@ -424,8 +457,8 @@ scene("nivel1", () => {
     //R15
     add([
         "wall",
-        rect(totalWidth * 0.2, totalHeight  * 0.165),
-        pos(totalWidth * 0.6,  totalHeight * 0.73),
+        rect(totalWidth * 0.2, totalHeight * 0.165),
+        pos(totalWidth * 0.6, totalHeight * 0.73),
         outline(2),
         area(),
         solid(),
@@ -435,8 +468,13 @@ scene("nivel1", () => {
     //R16
     add([
         "wall",
+
         rect(totalWidth * 0.05, totalHeight  * 0.185),
         pos(totalWidth * 0.75, totalHeight  * 0.445),
+
+        rect(totalWidth * 0.05, totalHeight * 0.185),
+        pos(totalWidth * 0.75, totalHeight * 0.445),
+
         outline(2),
         area(),
         solid(),
@@ -446,8 +484,8 @@ scene("nivel1", () => {
     //R17
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345 / 3),
-        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5),  totalHeight  * 0.445 - (totalHeight  * 0.345 / 3)),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.345 / 3),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5), totalHeight * 0.445 - (totalHeight * 0.345 / 3)),
         outline(2),
         area(),
         solid(),
@@ -457,8 +495,8 @@ scene("nivel1", () => {
     //R18
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.43 / 3),
-        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5),  totalHeight * 0.1),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.43 / 3),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5), totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -468,8 +506,8 @@ scene("nivel1", () => {
     //R19
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)),
-        pos(totalWidth * 0.75,  totalHeight * 0.1),
+        rect(totalWidth * 0.05, totalHeight * 0.345 - (totalHeight * 0.345 / 3)),
+        pos(totalWidth * 0.75, totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -576,14 +614,14 @@ scene("nivel1", () => {
         shake(70);
         add([
             text("Game Over!"),
-            pos(totalWidth*0.425, totalHeight*0.36),
+            pos(totalWidth * 0.425, totalHeight * 0.36),
             scale(3),
             color(255, 0, 0)
         ])
         botaoRefazer = add([
             "botaoRefazer",
             rect(100, 15),
-            pos(totalWidth*0.4, totalHeight*0.42),
+            pos(totalWidth * 0.4, totalHeight * 0.42),
             scale(3),
             color(255, 255, 255),
             outline(1),
@@ -591,7 +629,7 @@ scene("nivel1", () => {
         ])
         add([
             text("Jogar Novamente"),
-            pos(totalWidth*0.425, totalHeight*0.435),
+            pos(totalWidth * 0.425, totalHeight * 0.435),
             scale(2),
         ])
     }
@@ -627,8 +665,8 @@ scene("nivel1", () => {
     player.onCollide("greenCrystal", () => {
         destroyAll("greenCrystal");
         gCrystal = true;
-        
-        if(gCrystal && rCrystal && bCrystal) {
+
+        if (gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
     })
@@ -636,8 +674,8 @@ scene("nivel1", () => {
     player.onCollide("redCrystal", () => {
         destroyAll("redCrystal");
         rCrystal = true;
-        
-        if(gCrystal && rCrystal && bCrystal) {
+
+        if (gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
     })
@@ -645,14 +683,14 @@ scene("nivel1", () => {
     player.onCollide("blueCrystal", () => {
         destroyAll("blueCrystal");
         bCrystal = true;
-        
-        if(gCrystal && rCrystal && bCrystal) {
+
+        if (gCrystal && rCrystal && bCrystal) {
             portal.use(sprite("openPortal"));
         }
     })
 
     player.onCollide("portal", () => {
-        if(gCrystal && rCrystal && bCrystal) {
+        if (gCrystal && rCrystal && bCrystal) {
             go("boss1");
         }
     })
@@ -664,11 +702,87 @@ scene("nivel1", () => {
         blueSlime.move(blueSlimeH, blueSlimeV);
     })
 
+    const scoreMinutos = add([
+        text(scoreMin),
+        pos(13, 24)
+    ]);
+
+    const scoreSegundos = add([
+        text(scoreSeg),
+        pos(55, 24)
+    ]);
+
+    const doisPontos = add([
+        text(" : "),
+        pos(17, 24)
+    ]);
+
+    const textoMin = add([
+        text("Min"),
+        pos(24, 24)
+    ]);
+
+    const textoSeg = add([
+        text("s"),
+        pos(75, 24)
+    ]);
+
+    loop(1, () => {
+
+        if (scoreSeg < 60) {
+            scoreSeg++;
+        } else {
+            scoreSeg = 0;
+            scoreMin++;
+        }
+
+        scoreMinutos.text = scoreMin;
+        scoreSegundos.text = scoreSeg;
+    });
+
 })
 
 scene("boss1", () => {
 
     let faseBoss = 1;
+
+    const scoreMinutos = add([
+        text(scoreMin),
+        pos(13, 24)
+    ]);
+
+    const scoreSegundos = add([
+        text(scoreSeg),
+        pos(55, 24)
+    ]);
+
+    const doisPontos = add([
+        text(" : "),
+        pos(17, 24)
+    ]);
+
+    const textoMin = add([
+        text("Min"),
+        pos(24, 24)
+    ]);
+
+    const textoSeg = add([
+        text("s"),
+        pos(75, 24)
+    ]);
+
+    loop(1, () => {
+        
+        if (scoreSeg < 60) {
+            scoreSeg++;
+        } else {
+            scoreSeg = 0;
+            scoreMin++;
+        }
+
+        scoreMinutos.text = scoreMin;
+        scoreSegundos.text = scoreSeg;
+    });
 
     const borderTop = add([
         "wall",
@@ -933,8 +1047,8 @@ scene("boss1", () => {
     loop(tempoEspinhos, () => {
         let width = randi(10, totalWidth - 30);
         let height = randi(10, totalHeight - 30);
-        
-        if(!spike1) {
+
+        if (!spike1) {
             spike1 = add([
                 "randomSpike",
                 area(),
@@ -991,7 +1105,7 @@ scene("boss1", () => {
         loop(tempoEspinhos, () => {
             let espinho = randi(0, 5);
 
-            if(espinho == 0 && espinhoAtual != 1) {
+            if (espinho == 0 && espinhoAtual != 1) {
                 destroy(spike1);
                 spike1 = undefined;
             } else if (espinho == 1 && espinhoAtual != 2) {
@@ -1003,7 +1117,7 @@ scene("boss1", () => {
             } else if (espinho == 3 && espinhoAtual != 4) {
                 destroy(spike4);
                 spike4 = undefined;
-            } else if(espinhoAtual != 5) {
+            } else if (espinhoAtual != 5) {
                 destroy(spike5);
                 spike5 = undefined;
             }

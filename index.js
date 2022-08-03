@@ -13,7 +13,6 @@ app.get("/niveis", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/nivel.html"));
 })
   
-
 app.listen(3000, () => {
     console.log('App funcionando na porta 3000')
 });
