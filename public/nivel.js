@@ -26,13 +26,14 @@ loadSprite("blueCrystal", "/sprites/blueCrystal.png");
 loadSprite("queenSlime1", "/sprites/queenSlime.png");
 loadSprite("queenSlime2", "/sprites/queenSlime2.png");
 loadSprite("spike", "/sprites/spike.png");
+loadSprite("halfSpike", "/sprites/halfSpike.png");
 
 
 let scoreSeg = 0;
 let scoreMin = 0;
 
 
-async function backgroundFase(){
+async function backgroundFase() {
     let bgImage = await loadSprite("background", "https://st3.depositphotos.com/5479200/13537/i/600/depositphotos_135371314-stock-photo-cartoon-winter-landscape-with-ice.jpg");
 
     let background = add([
@@ -42,16 +43,16 @@ async function backgroundFase(){
         scale(1),
         fixed(),
         layer("1")
-      
+
     ]);
-   
+
     background.scaleTo(Math.max(
         totalWidth / bgImage.tex.width,
         totalHeight / bgImage.tex.height
     ));
 }
 
-async function backgroundBoss(){
+async function backgroundBoss() {
     let bgImageBoss = await loadSprite("backgroundBoss", "https://media.istockphoto.com/vectors/cartoon-winter-landscape-with-ice-snow-and-cloudy-sky-vector-vector-id613905532?k=20&m=613905532&s=170667a&w=0&h=6aCruDX9brh5WNFHt_mbMTt-SvBXjYeRjni3gQ6vtk8=");
 
     let background = add([
@@ -62,7 +63,7 @@ async function backgroundBoss(){
         fixed(),
         layer("1")
     ]);
-   
+
     background.scaleTo(Math.max(
         totalWidth / bgImageBoss.tex.width,
         totalHeight / bgImageBoss.tex.height
@@ -71,9 +72,10 @@ async function backgroundBoss(){
 
 scene("nivel1", () => {
 
-    layers ([
+    layers([
         "1",
-        "2"
+        "2",
+        "3"
     ], "2")
 
     backgroundFase();
@@ -316,26 +318,26 @@ scene("nivel1", () => {
 
     greenSlime2.onCollide("wall", () => {
         let numero = randi(0, 4);
-        if(numero == 0) {
-            if(greenSlime2V != 200) {
+        if (numero == 0) {
+            if (greenSlime2V != 200) {
                 greenSlime2H = 0;
                 greenSlime2V = -200;
             }
         }
-        if(numero == 1) {
-            if(greenSlime2H != -200) {
+        if (numero == 1) {
+            if (greenSlime2H != -200) {
                 greenSlime2H = 200;
                 greenSlime2V = 0;
             }
         }
-        if(numero == 2) {
-            if(greenSlime2V != -200) {
+        if (numero == 2) {
+            if (greenSlime2V != -200) {
                 greenSlime2H = 0;
                 greenSlime2V = 200;
             }
         }
-        if(numero == 3) {
-            if(greenSlime2H != 200) {
+        if (numero == 3) {
+            if (greenSlime2H != 200) {
                 greenSlime2H = -200;
                 greenSlime2V = 0;
             }
@@ -567,8 +569,8 @@ scene("nivel1", () => {
     add([
         "wall",
 
-        rect(totalWidth * 0.05, totalHeight  * 0.185),
-        pos(totalWidth * 0.75, totalHeight  * 0.445),
+        rect(totalWidth * 0.05, totalHeight * 0.185),
+        pos(totalWidth * 0.75, totalHeight * 0.445),
 
         rect(totalWidth * 0.05, totalHeight * 0.185),
         pos(totalWidth * 0.75, totalHeight * 0.445),
@@ -615,8 +617,8 @@ scene("nivel1", () => {
     //R20
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.43 / 6 + totalHeight * 0.1),
-        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5 * 3),  10),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.43 / 6 + totalHeight * 0.1),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5 * 3), 10),
         outline(2),
         area(),
         solid(),
@@ -626,8 +628,8 @@ scene("nivel1", () => {
     //R21
     add([
         "wall",
-        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345 / 3),
-        pos((totalWidth * 0.25) / 5 + totalWidth * 0.45,  totalHeight  * 0.445 - (totalHeight  * 0.345 / 3)),
+        rect((totalWidth * 0.25) / 5, totalHeight * 0.345 / 3),
+        pos((totalWidth * 0.25) / 5 + totalWidth * 0.45, totalHeight * 0.445 - (totalHeight * 0.345 / 3)),
         outline(2),
         area(),
         solid(),
@@ -637,8 +639,8 @@ scene("nivel1", () => {
     //R22
     add([
         "wall",
-        rect((totalWidth * 0.2 / 2) - 10, (totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)) / 4),
-        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 2), ((totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)) / 4) + totalHeight * 0.1),
+        rect((totalWidth * 0.2 / 2) - 10, (totalHeight * 0.345 - (totalHeight * 0.345 / 3)) / 4),
+        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 2), ((totalHeight * 0.345 - (totalHeight * 0.345 / 3)) / 4) + totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -648,8 +650,8 @@ scene("nivel1", () => {
     //R23
     add([
         "wall",
-        rect(totalWidth * 0.2 / 4 * 2 - totalWidth * 0.01, totalHeight  * 0.2),
-        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 4) + totalWidth * 0.01 - 10,  ((totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)) / 4) * 3.5 + totalHeight * 0.1),
+        rect(totalWidth * 0.2 / 4 * 2 - totalWidth * 0.01, totalHeight * 0.2),
+        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 4) + totalWidth * 0.01 - 10, ((totalHeight * 0.345 - (totalHeight * 0.345 / 3)) / 4) * 3.5 + totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
@@ -659,8 +661,8 @@ scene("nivel1", () => {
     //R24
     add([
         "wall",
-        rect((totalWidth * 0.2 / 4), totalHeight  * 0.1),
-        pos(totalWidth - ((totalWidth * 0.2 / 4)) - 10, totalHeight  * 0.63),
+        rect((totalWidth * 0.2 / 4), totalHeight * 0.1),
+        pos(totalWidth - ((totalWidth * 0.2 / 4)) - 10, totalHeight * 0.63),
         outline(2),
         area(),
         solid(),
@@ -670,8 +672,8 @@ scene("nivel1", () => {
     //R25
     add([
         "wall",
-        rect((totalWidth * 0.2 / 4 * 2 - totalWidth * 0.01) / 3, totalHeight  * 0.165),
-        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 4), totalHeight  * 0.73),
+        rect((totalWidth * 0.2 / 4 * 2 - totalWidth * 0.01) / 3, totalHeight * 0.165),
+        pos(totalWidth * 0.8 + (totalWidth * 0.2 / 4), totalHeight * 0.73),
         outline(2),
         area(),
         solid(),
@@ -714,7 +716,8 @@ scene("nivel1", () => {
             text("Game Over!"),
             pos(totalWidth * 0.425, totalHeight * 0.36),
             scale(3),
-            color(255, 0, 0)
+            color(255, 0, 0),
+            layer("3")
         ])
         botaoRefazer = add([
             "botaoRefazer",
@@ -723,12 +726,14 @@ scene("nivel1", () => {
             scale(3),
             color(255, 255, 255),
             outline(1),
-            area()
+            area(),
+            layer("3")
         ])
         add([
             text("Jogar Novamente"),
             pos(totalWidth * 0.425, totalHeight * 0.435),
             scale(2),
+            layer("3")
         ])
     }
 
@@ -784,6 +789,7 @@ scene("nivel1", () => {
 
     player.onCollide("portal", () => {
         if (gCrystal && rCrystal && bCrystal) {
+            localStorage.setItem("nivel", "boss1");
             go("boss1");
         }
     })
@@ -798,29 +804,29 @@ scene("nivel1", () => {
     })
 
     const scoreMinutos = add([
-        text(scoreMin,{
-            size:15
+        text(scoreMin, {
+            size: 15
         }),
         pos(13, 24)
     ]);
 
     const scoreSegundos = add([
         text(scoreSeg, {
-            size:15
+            size: 15
         }),
         pos(90, 24)
     ]);
 
     const textoMin = add([
-        text("Min",{
-            size:15
+        text("Min", {
+            size: 15
         }),
         pos(40, 24)
     ]);
 
     const textoSeg = add([
-        text("s",{
-            size:15
+        text("s", {
+            size: 15
         }),
         pos(115, 24)
     ]);
@@ -842,46 +848,50 @@ scene("nivel1", () => {
 
 scene("boss1", () => {
 
-    layers ([
+    layers([
         "1",
-        "2"
+        "2",
+        "3"
     ], "2")
 
     backgroundBoss();
 
     let faseBoss = 1;
-    let vidaBoss = 5;
 
     const scoreMinutos = add([
-        text(scoreMin,{
-            size:15
+        text(scoreMin, {
+            size: 15
         }),
-        pos(13, 24)
+        pos(13, 24),
+        layer("3")
     ]);
 
     const scoreSegundos = add([
-        text(scoreSeg,{
-            size:15
+        text(scoreSeg, {
+            size: 15
         }),
-        pos(90, 24)
+        pos(90, 24),
+        layer("3")
     ]);
 
     const textoMin = add([
-        text("Min",{
-            size:15
+        text("Min", {
+            size: 15
         }),
-        pos(40, 24)
+        pos(40, 24),
+        layer("3")
     ]);
 
     const textoSeg = add([
-        text("s",{
-            size:15
+        text("s", {
+            size: 15
         }),
-        pos(115, 24)
+        pos(115, 24),
+        layer("3")
     ]);
 
     loop(1, () => {
-        
+
         if (scoreSeg < 60) {
             scoreSeg++;
         } else {
@@ -971,7 +981,8 @@ scene("boss1", () => {
         sprite("queenSlime1"),
         pos(totalWidth * 0.44, totalHeight * 0.4),
         area(),
-        scale(3)
+        scale(3),
+        health(5)
     ])
 
     function criarEspinhos() {
@@ -1145,170 +1156,72 @@ scene("boss1", () => {
         ])
     }
 
-    // criarEspinhos();
+    const barraVida1 = add([
+        rect(40, 40),
+        pos(totalWidth * 0.8, totalHeight * 0.05),
+        layer("3"),
+        color(255, 0, 0),
+        outline(3)
+    ])
+    const barraVida2 = add([
+        rect(40, 40),
+        pos(totalWidth * 0.8 + 40, totalHeight * 0.05),
+        layer("3"),
+        color(255, 0, 0),
+        outline(3)
+    ])
+    const barraVida3 = add([
+        rect(40, 40),
+        pos(totalWidth * 0.8 + 80, totalHeight * 0.05),
+        layer("3"),
+        color(255, 0, 0),
+        outline(3)
+    ])
+    const barraVida4 = add([
+        rect(40, 40),
+        pos(totalWidth * 0.8 + 120, totalHeight * 0.05),
+        layer("3"),
+        color(255, 0, 0),
+        outline(3)
+    ])
+    const barraVida5 = add([
+        rect(40, 40),
+        pos(totalWidth * 0.8 + 160, totalHeight * 0.05),
+        layer("3"),
+        color(255, 0, 0),
+        outline(3)
+    ])
 
-    let tempoEspinhos = 1;
-    let spike1;
-    let spike2;
-    let spike3;
-    let spike4;
-    let spike5;
-    let spike6;
-    let spike7;
-    let spike8;
-    let spike9;
-    let spike10;
+    let intervaloEspinhos;
 
-    let espinhoAtual;
+    function criarIntervaloEspinhos(tempo) {
+        intervaloEspinhos = setInterval(() => {
+            let width = randi(10, totalWidth - 30);
+            let height = randi(10, totalHeight - 30);
 
-    loop(tempoEspinhos, () => {
-        let width = randi(10, totalWidth - 30);
-        let height = randi(10, totalHeight - 30);
+            add([
+                "halfSpike",
+                area(),
+                sprite("halfSpike"),
+                pos(width, height),
+                scale(2),
+                lifespan(tempo * 2 / 1000)
+            ])
 
-        if (!spike1) {
-            spike1 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 1;
-        } else if (!spike2) {
-            spike2 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 2;
-        } else if (!spike3) {
-            spike3 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 3;
-        } else if (!spike4) {
-            spike4 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 4;
-        } else if (!spike5) {
-            spike5 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 5;
-        } else if (!spike6) {
-            spike6 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 5;
-        } else if (!spike7) {
-            spike7 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 5;
-        } else if (!spike8) {
-            spike8 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 5;
-        } else if (!spike9) {
-            spike9 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 5;
-        } else if (!spike10) {
-            spike10 = add([
-                "randomSpike",
-                area(),
-                solid(),
-                sprite("spike"),
-                pos(width, height),
-                scale(2)
-            ])
-            espinhoAtual = 5;
-        }
-    })
-
-    setTimeout(() => {
-        loop(tempoEspinhos, () => {
-
-            let espinho = randi(0, 5);
-
-            if (faseBoss > 2) {
-                espinho = randi(0, 10);
-            }
-            if (espinho == 0 && espinhoAtual != 1) {
-                destroy(spike1);
-                spike1 = undefined;
-            } else if (espinho == 1 && espinhoAtual != 2) {
-                destroy(spike2);
-                spike2 = undefined;
-            } else if (espinho == 2 && espinhoAtual != 3) {
-                destroy(spike3);
-                spike3 = undefined;
-            } else if (espinho == 3 && espinhoAtual != 4) {
-                destroy(spike4);
-                spike4 = undefined;
-            } else if (espinho == 4 && espinhoAtual != 5) {
-                destroy(spike5);
-                spike5 = undefined;
-            } else if (espinho == 5 && espinhoAtual != 6) {
-                destroy(spike6);
-                spike5 = undefined;
-            } else if (espinho == 6 && espinhoAtual != 7) {
-                destroy(spike7);
-                spike5 = undefined;
-            } else if (espinho == 7 && espinhoAtual != 8) {
-                destroy(spike8);
-                spike5 = undefined;
-            } else if (espinho == 8 && espinhoAtual != 9) {
-                destroy(spike9);
-                spike5 = undefined;
-            } else if (espinho == 9 && espinhoAtual != 10) {
-                destroy(spike10);
-                spike5 = undefined;
-            }
-        })
-    }, 3000);
+            setTimeout(() => {
+                add([
+                    "randomSpike",
+                    area(),
+                    solid(),
+                    sprite("spike"),
+                    pos(width, height),
+                    scale(2),
+                    lifespan(15)
+                ])
+            }, tempo * 2);
+        }, tempo)
+    }
+    criarIntervaloEspinhos(1000);
 
     player.onCollide("spike", () => {
         destroyAll("player");
@@ -1326,18 +1239,27 @@ scene("boss1", () => {
         if (faseBoss == 2) {
             clearInterval(intervalo);
             criarIntervalo(10000);
+            barraVida5.color = rgb(211, 211, 211);
         }
-        if(faseBoss == 3) {
-
+        if (faseBoss == 3) {
+            clearInterval(intervaloEspinhos);
+            criarIntervaloEspinhos(500);
+            barraVida4.color = rgb(211, 211, 211);
         }
-        if(faseBoss == 4) {
+        if (faseBoss == 4) {
             clearInterval(intervalo);
             criarIntervalo(5000);
+            clearInterval(intervaloEspinhos);
+            criarIntervaloEspinhos(400);
             queenSlime.use(sprite("queenSlime2"))
+            barraVida3.color = rgb(211, 211, 211);
         }
-        if(faseBoss == 5) {
+        if (faseBoss == 5) {
+            clearInterval(intervaloEspinhos);
+            criarIntervaloEspinhos(250);
             clearInterval(intervalo);
             criarIntervalo(1000);
+            barraVida2.color = rgb(211, 211, 211);
         }
 
         if (faseBoss == 1) {
@@ -1358,14 +1280,17 @@ scene("boss1", () => {
             tempoEspinhos = 0.25;
         }
 
-        setTimeout(() => {
-            criarEspinhos();
-        }, 3000)
+        if (faseBoss <= 5) {
+            setTimeout(() => {
+                criarEspinhos();
+            }, 3000)
+        }
     }
 
     player.onCollide("queenSlime", () => {
         faseBoss++;
-        vidaBoss--;
+        queenSlime.hurt(1);
+        shake(20);
         trocarFase();
     })
 
@@ -1377,7 +1302,8 @@ scene("boss1", () => {
             text("Game Over!"),
             pos(totalWidth * 0.425, totalHeight * 0.36),
             scale(3),
-            color(255, 0, 0)
+            color(255, 0, 0),
+            layer("3")
         ])
         botaoRefazer = add([
             "botaoRefazer",
@@ -1386,17 +1312,20 @@ scene("boss1", () => {
             scale(3),
             color(255, 255, 255),
             outline(1),
-            area()
+            area(),
+            layer("3")
         ])
         add([
             text("Jogar Novamente"),
             pos(totalWidth * 0.425, totalHeight * 0.435),
             scale(2),
+            layer("3")
         ])
     }
 
     onClick("botaoRefazer", () => {
         clearInterval(intervalo);
+        clearInterval(intervaloEspinhos);
         destroyAll("player");
         destroyAll("spike");
         destroyAll("queenSlime");
@@ -1406,11 +1335,12 @@ scene("boss1", () => {
     let botaoVoltar;
 
     function vitoria() {
+        barraVida1.color = rgb(211, 211, 211);
         add([
             text("Vitoria!"),
-            pos(totalWidth * 0.425, totalHeight * 0.36),
+            pos(totalWidth * 0.44, totalHeight * 0.36),
             scale(3),
-            color(255, 0, 0)
+            color(0, 255, 0)
         ])
         botaoVoltar = add([
             "botaoRefazer",
@@ -1422,19 +1352,17 @@ scene("boss1", () => {
             area()
         ])
         add([
-            text("Voltar ao Inicio"),
-            pos(totalWidth * 0.425, totalHeight * 0.435),
+            text("Continuar"),
+            pos(totalWidth * 0.455, totalHeight * 0.435),
             scale(2),
         ])
     }
 
-    onUpdate(() => {
-        if (vidaBoss <= 0) {
-            vitoria();
-            destroyAll("spike");
-            clearInterval(intervalo)
-            vidaBoss = 1;
-        }
+    queenSlime.on("death", () => {
+        vitoria();
+        destroyAll("spike");
+        clearInterval(intervalo);
+        clearInterval(intervaloEspinhos)
     })
 
     let intervalo;
@@ -1448,21 +1376,21 @@ scene("boss1", () => {
                 area(),
                 solid(),
                 scale(2),
-                move(player.pos.angle(totalWidth * 0.47, totalHeight * 0.45), 200)
+                move(player.pos.angle(totalWidth * 0.47, totalHeight * 0.45), 300)
             ])
-    
+
             bombSpike.onCollide("spike", (spike) => {
                 destroy(spike);
             })
-    
+
             bombSpike.onCollide("randomSpike", (randomSpike) => {
                 destroy(randomSpike);
             })
-    
+
             bombSpike.onCollide("wall", () => {
                 destroy(bombSpike);
             })
-    
+
             bombSpike.onCollide("player", () => {
                 destroyAll("player");
                 jogadorMorreu();
@@ -1474,4 +1402,9 @@ scene("boss1", () => {
     criarEspinhos();
 })
 
-go("nivel1");
+if (localStorage.getItem("nivel") == "nivel1" || !localStorage.getItem("nivel")) {
+    go("nivel1");
+}
+if (localStorage.getItem("nivel") == "boss1") {
+    go("boss1");
+}
