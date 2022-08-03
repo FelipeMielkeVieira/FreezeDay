@@ -43,6 +43,7 @@ async function criar(nomeTabela, id, dado) {
 }
 
 async function buscar(nomeTabela) {
+    console.log("teste");
     const tableRef = collection(bancoDados, nomeTabela);
 
     const q = query(tableRef);
@@ -78,7 +79,6 @@ async function deletar(nomeTabela, id) {
         message: `${id} deletado!`
     }
 }
-
 
 module.exports = {
     criar,
