@@ -793,6 +793,8 @@ scene("boss1", () => {
     let spike4;
     let spike5;
 
+    let espinhoAtual;
+
     loop(tempoEspinhos, () => {
         let width = randi(10, totalWidth - 30);
         let height = randi(10, totalHeight - 30);
@@ -806,6 +808,7 @@ scene("boss1", () => {
                 pos(width, height),
                 scale(2)
             ])
+            espinhoAtual = 1;
         } else if (!spike2) {
             spike2 = add([
                 "randomSpike",
@@ -815,6 +818,7 @@ scene("boss1", () => {
                 pos(width, height),
                 scale(2)
             ])
+            espinhoAtual = 2;
         } else if (!spike3) {
             spike3 = add([
                 "randomSpike",
@@ -824,6 +828,7 @@ scene("boss1", () => {
                 pos(width, height),
                 scale(2)
             ])
+            espinhoAtual = 3;
         } else if (!spike4) {
             spike4 = add([
                 "randomSpike",
@@ -833,6 +838,7 @@ scene("boss1", () => {
                 pos(width, height),
                 scale(2)
             ])
+            espinhoAtual = 4;
         } else if (!spike5) {
             spike5 = add([
                 "randomSpike",
@@ -842,6 +848,7 @@ scene("boss1", () => {
                 pos(width, height),
                 scale(2)
             ])
+            espinhoAtual = 5;
         }
     })
 
@@ -849,19 +856,19 @@ scene("boss1", () => {
         loop(tempoEspinhos, () => {
             let espinho = randi(0, 5);
 
-            if(espinho == 0) {
+            if(espinho == 0 && espinhoAtual != 1) {
                 destroy(spike1);
                 spike1 = undefined;
-            } else if (espinho == 1) {
+            } else if (espinho == 1 && espinhoAtual != 2) {
                 destroy(spike2);
                 spike2 = undefined;
-            } else if (espinho == 2) {
+            } else if (espinho == 2 && espinhoAtual != 3) {
                 destroy(spike3);
                 spike3 = undefined;
-            } else if (espinho == 3) {
+            } else if (espinho == 3 && espinhoAtual != 4) {
                 destroy(spike4);
                 spike4 = undefined;
-            } else {
+            } else if(espinhoAtual != 5) {
                 destroy(spike5);
                 spike5 = undefined;
             }
