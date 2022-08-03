@@ -72,7 +72,9 @@ async function backgroundBoss() {
 
 scene("nivel1", () => {
 
-    layers([
+    let morto = false;
+
+    layers ([
         "1",
         "2",
         "3"
@@ -743,16 +745,19 @@ scene("nivel1", () => {
 
     player.onCollide("redSlime", () => {
         jogadorMorreu();
+        morto = true;
         destroyAll("player");
     })
 
     player.onCollide("greenSlime", () => {
         jogadorMorreu();
+        morto = true;
         destroyAll("player");
     })
 
     player.onCollide("blueSlime", () => {
         jogadorMorreu();
+        morto = true;
         destroyAll("player");
     })
 
@@ -832,12 +837,13 @@ scene("nivel1", () => {
     ]);
 
     loop(1, () => {
-
-        if (scoreSeg < 60) {
-            scoreSeg++;
-        } else {
-            scoreSeg = 0;
-            scoreMin++;
+        if (morto == false) {
+            if (scoreSeg < 60) {
+                scoreSeg++;
+            } else {
+                scoreSeg = 0;
+                scoreMin++;
+            }
         }
 
         scoreMinutos.text = scoreMin;
@@ -847,6 +853,8 @@ scene("nivel1", () => {
 })
 
 scene("boss1", () => {
+
+    let morto = false;
 
     layers([
         "1",
@@ -898,7 +906,15 @@ scene("boss1", () => {
             scoreSeg = 0;
             scoreMin++;
         }
+        if (morto == false) {
 
+            if (scoreSeg < 60) {
+                scoreSeg++;
+            } else {
+                scoreSeg = 0;
+                scoreMin++;
+            }
+        }
         scoreMinutos.text = scoreMin;
         scoreSegundos.text = scoreSeg;
     });
@@ -1226,11 +1242,13 @@ scene("boss1", () => {
     player.onCollide("spike", () => {
         destroyAll("player");
         jogadorMorreu();
+        morto = true;
     })
 
     player.onCollide("randomSpike", () => {
         destroyAll("player");
         jogadorMorreu();
+        morto = true;
     })
 
     function trocarFase() {
@@ -1394,6 +1412,7 @@ scene("boss1", () => {
             bombSpike.onCollide("player", () => {
                 destroyAll("player");
                 jogadorMorreu();
+                morto = true;
             })
         }, tempo)
     }
