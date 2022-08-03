@@ -1,6 +1,90 @@
 body {
-    margin: 0;
+    padding: 0;
     background-color: #cccccc;
-    background-size: 100vw;
-    height: 100vh;
+    background-size: 100%;
+    height: 100%;
 }
+
+.freezeDay {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+}
+
+.principal {
+    height: 98vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.modal {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-radius: 10px;
+    background-color: #87cefa;
+    width: 400px;
+    height: 350px;
+}
+
+.divUsuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nomeUser {
+    color: white;
+    font-size: 25px;
+}
+
+#nomeUsuario {
+    width: 200px;
+    height: 20px;
+    border: solid 1px white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.botaoJogo {
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #90ee90;
+}
+
+#botaoJogar {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+#botaoRanking {
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.risco {
+    width: 300px;
+    background-color: white;
+    height: 1px;
+}
+

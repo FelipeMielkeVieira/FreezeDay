@@ -1,7 +1,7 @@
 let totalWidth = window.innerWidth * 0.98;
 let totalHeight = window.innerHeight * 0.96;
 
-let speed = 400;
+let speed = 200;
 
 kaboom({
     debug: true,
@@ -22,6 +22,10 @@ loadSprite("openPortal", "/sprites/openPortal.png");
 loadSprite("redCrystal", "/sprites/redCrystal.png");
 loadSprite("greenCrystal", "/sprites/greenCrystal.png");
 loadSprite("blueCrystal", "/sprites/blueCrystal.png");
+
+loadSprite("queenSlime1", "/sprites/queenSlime.png");
+loadSprite("queenSlime2", "/sprites/queenSlime2.png");
+loadSprite("spike", "/sprites/spike.png");
 
 scene("nivel1", () => {
 
@@ -535,6 +539,12 @@ scene("nivel1", () => {
         }
     })
 
+    player.onCollide("portal", () => {
+        if(gCrystal && rCrystal && bCrystal) {
+            go("boss1");
+        }
+    })
+
     onUpdate(() => {
         redSlime.move(redSlimeH, redSlimeV);
         greenSlime.move(greenSlimeH, greenSlimeV);
@@ -543,4 +553,342 @@ scene("nivel1", () => {
 
 })
 
-go("nivel1");
+scene("boss1", () => {
+
+    let faseBoss = 1;
+
+    const borderTop = add([
+        "wall",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderLeft = add([
+        "wall",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderBottom = add([
+        "wall",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, totalHeight - 10),
+        area(),
+        solid(),
+    ])
+
+    const borderRight = add([
+        "wall",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(totalWidth - 10, 0),
+        area(),
+        solid(),
+    ])
+
+    const player = add([
+        "player",
+        sprite("playerD"),
+        pos(totalWidth * 0.03, totalHeight * 0.85),
+        area(),
+        solid(),
+        scale(1.5)
+    ])
+
+    onKeyDown("left", () => {
+        player.move(-speed, 0);
+    })
+    onKeyDown("a", () => {
+        player.move(-speed, 0);
+    })
+
+    onKeyDown("right", () => {
+        player.move(speed, 0);
+    })
+    onKeyDown("d", () => {
+        player.move(speed, 0);
+    })
+
+    onKeyDown("up", () => {
+        player.move(0, -speed);
+    })
+    onKeyDown("w", () => {
+        player.move(0, -speed);
+    })
+
+    onKeyDown("down", () => {
+        player.move(0, speed);
+    })
+    onKeyDown("s", () => {
+        player.move(0, speed);
+    })
+
+    const queenSlime = add([
+        "queenSlime",
+        sprite("queenSlime1"),
+        pos(totalWidth * 0.44, totalHeight * 0.4),
+        area(),
+        solid(),
+        scale(3)
+    ])
+
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.37, totalHeight * 0.4),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.37, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.37, totalHeight * 0.45),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.37, totalHeight * 0.5),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.37, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.4, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.43, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.46, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.49, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.52, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.55, totalHeight * 0.35),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.55, totalHeight * 0.4),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.55, totalHeight * 0.45),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.55, totalHeight * 0.5),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.55, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.4, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.43, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.46, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.49, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.52, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+    add([
+        "spike",
+        sprite("spike"),
+        pos(totalWidth * 0.55, totalHeight * 0.55),
+        area(),
+        solid(),
+        scale(2)
+    ])
+
+    let tempoEspinhos = 1;
+    let spike1;
+    let spike2;
+    let spike3;
+    let spike4;
+    let spike5;
+
+    loop(tempoEspinhos, () => {
+        let width = randi(10, totalWidth - 30);
+        let height = randi(10, totalHeight - 30);
+        
+        if(!spike1) {
+            spike1 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+        } else if (!spike2) {
+            spike2 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+        } else if (!spike3) {
+            spike3 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+        } else if (!spike4) {
+            spike4 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+        } else if (!spike5) {
+            spike5 = add([
+                "randomSpike",
+                area(),
+                solid(),
+                sprite("spike"),
+                pos(width, height),
+                scale(2)
+            ])
+        }
+    })
+
+    setTimeout(() => {
+        loop(tempoEspinhos, () => {
+            let espinho = randi(0, 5);
+
+            if(espinho == 0) {
+                destroy(spike1);
+                spike1 = undefined;
+            } else if (espinho == 1) {
+                destroy(spike2);
+                spike2 = undefined;
+            } else if (espinho == 2) {
+                destroy(spike3);
+                spike3 = undefined;
+            } else if (espinho == 3) {
+                destroy(spike4);
+                spike4 = undefined;
+            } else {
+                destroy(spike5);
+                spike5 = undefined;
+            }
+        })
+    }, 3000);
+})
+
+go("boss1");
