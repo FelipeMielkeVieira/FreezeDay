@@ -346,7 +346,7 @@ scene("nivel1", () => {
     //R12
     add([
         "wall",
-        rect((totalWidth * 0.25) / 3, totalHeight  * 0.345),
+        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345),
         pos(totalWidth * 0.45,  totalHeight * 0.1),
         outline(2),
         area(),
@@ -363,7 +363,7 @@ scene("nivel1", () => {
         area(),
         solid(),
         color(127, 200, 255)
-    ])
+    ]) 
 
     //R14
     add([
@@ -398,11 +398,33 @@ scene("nivel1", () => {
         color(127, 200, 255)
     ])
 
+    //R17
+    add([
+        "wall",
+        rect((totalWidth * 0.25) / 5, totalHeight  * 0.345 / 3),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5),  totalHeight  * 0.445 - (totalHeight  * 0.345 / 3)),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
     //R18
     add([
         "wall",
-        rect(totalWidth * 0.05, totalHeight  * 0.185),
-        pos(totalWidth * 0.45 + (totalWidth * 0.25) / 3,  totalHeight * 0.1),
+        rect((totalWidth * 0.25) / 5, totalHeight  * 0.43 / 3),
+        pos(totalWidth * 0.70 - ((totalWidth * 0.25) / 5),  totalHeight * 0.1),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R19
+    add([
+        "wall",
+        rect(totalWidth * 0.05, totalHeight  * 0.345 - (totalHeight  * 0.345 / 3)),
+        pos(totalWidth * 0.75,  totalHeight * 0.1),
         outline(2),
         area(),
         solid(),
