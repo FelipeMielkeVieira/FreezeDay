@@ -28,6 +28,8 @@ loadSprite("queenSlime2", "/sprites/queenSlime2.png");
 loadSprite("spike", "/sprites/spike.png");
 loadSprite("halfSpike", "/sprites/halfSpike.png");
 
+loadSprite("slimeBravo", "/sprites/slimeBravo.png");
+
 
 let scoreSeg = 0;
 let scoreMin = 0;
@@ -74,7 +76,7 @@ scene("nivel1", () => {
 
     let morto = false;
 
-    layers ([
+    layers([
         "1",
         "2",
         "3"
@@ -548,7 +550,7 @@ scene("nivel1", () => {
     //R14
     add([
         "wall",
-        rect(totalWidth * 0.1, totalHeight * 0.165),
+        rect(totalWidth * 0.1, totalHeight - totalHeight * 0.73 - 10),
         pos(totalWidth * 0.45, totalHeight * 0.73),
         outline(2),
         area(),
@@ -794,8 +796,8 @@ scene("nivel1", () => {
 
     player.onCollide("portal", () => {
         if (gCrystal && rCrystal && bCrystal) {
-            localStorage.setItem("nivel", "boss1");
-            go("boss1");
+            localStorage.setItem("nivel", "nivel2");
+            go("nivel2");
         }
     })
 
@@ -851,6 +853,534 @@ scene("nivel1", () => {
     });
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+scene("nivel2", () => {
+
+    let morto = false;
+
+    layers([
+        "1",
+        "2",
+        "3"
+    ], "2")
+
+    const scoreMinutos = add([
+        text(scoreMin, {
+            size: 15
+        }),
+        pos(13, 24),
+        layer("3")
+    ]);
+
+    const scoreSegundos = add([
+        text(scoreSeg, {
+            size: 15
+        }),
+        pos(90, 24),
+        layer("3")
+    ]);
+
+    const textoMin = add([
+        text("Min", {
+            size: 15
+        }),
+        pos(40, 24),
+        layer("3")
+    ]);
+
+    const textoSeg = add([
+        text("s", {
+            size: 15
+        }),
+        pos(115, 24),
+        layer("3")
+    ]);
+
+    loop(1, () => {
+
+        if (morto == false) {
+            if (scoreSeg < 60) {
+                scoreSeg++;
+            } else {
+                scoreSeg = 0;
+                scoreMin++;
+            }
+        }
+        scoreMinutos.text = scoreMin;
+        scoreSegundos.text = scoreSeg;
+    });
+
+    const borderTop = add([
+        "wall",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderLeft = add([
+        "wall",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderBottom = add([
+        "wall",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, totalHeight - 10),
+        area(),
+        solid(),
+    ])
+
+    const borderRight = add([
+        "wall",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(totalWidth - 10, 0),
+        area(),
+        solid(),
+    ])
+
+    const player = add([
+        "player",
+        sprite("playerD"),
+        pos(totalWidth * 0.03, totalHeight * 0.85),
+        area(),
+        solid(),
+        scale(1.5)
+    ])
+
+    onKeyDown("left", () => {
+        player.move(-speed, 0);
+    })
+    onKeyDown("a", () => {
+        player.move(-speed, 0);
+    })
+
+    onKeyDown("right", () => {
+        player.move(speed, 0);
+    })
+    onKeyDown("d", () => {
+        player.move(speed, 0);
+    })
+
+    onKeyDown("up", () => {
+        player.move(0, -speed);
+    })
+    onKeyDown("w", () => {
+        player.move(0, -speed);
+    })
+
+    onKeyDown("down", () => {
+        player.move(0, speed);
+    })
+    onKeyDown("s", () => {
+        player.move(0, speed);
+    })
+
+    //R1
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.075, totalHeight * 0.14),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R2
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.075, totalHeight * 0.42),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R3
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.075, totalHeight * 0.7),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R4
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.225, totalHeight * 0.14),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R5
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.225, totalHeight * 0.42),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R6
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.225, totalHeight * 0.7),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R7
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.375, totalHeight * 0.14),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R8
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.375, totalHeight * 0.42),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R9
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.375, totalHeight * 0.7),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R10
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.525, totalHeight * 0.14),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R11
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.525, totalHeight * 0.42),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R12
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.525, totalHeight * 0.7),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R13
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.675, totalHeight * 0.14),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R14
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.675, totalHeight * 0.42),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R15
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.675, totalHeight * 0.7),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R16
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.825, totalHeight * 0.14),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R17
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.825, totalHeight * 0.42),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    //R18
+    add([
+        "wall",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.825, totalHeight * 0.7),
+        outline(2),
+        area(),
+        solid(),
+        color(127, 200, 255)
+    ])
+
+    let slime1V = 0;
+    let slime1H = 200;
+    let slime2V = 200;
+    let slime2H = 0;
+    let slime3V = 0;
+    let slime3H = -200;
+
+    const slime1 = add([
+        "slime1",
+        "wall",
+        sprite("slimeBravo"),
+        pos(totalWidth * 0.03, totalHeight * 0.04),
+        area(),
+        solid(),
+        scale(2)
+    ])
+
+    const slime2 = add([
+        "slime2",
+        "wall",
+        sprite("slimeBravo"),
+        pos(totalWidth * 0.925, totalHeight * 0.04),
+        area(),
+        solid(),
+        scale(2)
+    ])
+
+    const slime3 = add([
+        "slime3",
+        "wall",
+        sprite("slimeBravo"),
+        pos(totalWidth * 0.85, totalHeight * 0.875),
+        area(),
+        solid(),
+        scale(2)
+    ])
+
+    slime1.onCollide("wall", () => {
+        if(slime1.pos.x < player.pos.x) {
+            slime1H = 200;
+            slime1V = 0;
+        } else
+        if(slime1.pos.x > player.pos.x) {
+            slime1H = -200;
+            slime1V = 0;
+        } else
+        if(slime1.pos.y < player.pos.y) {
+            slime1H = 0;
+            slime1V = 200;
+        } else {
+            slime1H = 0;
+            slime1V = -200;
+        }
+    })
+
+    slime2.onCollide("wall", () => {
+        if(slime2.pos.x < player.pos.x) {
+            slime2H = 200;
+            slime2V = 0;
+        } else
+        if(slime2.pos.x > player.pos.x) {
+            slime2H = -200;
+            slime2V = 0;
+        } else
+        if(slime2.pos.y < player.pos.y) {
+            slime2H = 0;
+            slime2V = 200;
+        } else {
+            slime2H = 0;
+            slime2V = -200;
+        }
+    })
+
+    slime3.onCollide("wall", () => {
+        if(slime3.pos.x < player.pos.x) {
+            slime3H = 200;
+            slime3V = 0;
+        } else
+        if(slime3.pos.x > player.pos.x) {
+            slime3H = -200;
+            slime3V = 0;
+        } else
+        if(slime3.pos.y < player.pos.y) {
+            slime3H = 0;
+            slime3V = 200;
+        } else {
+            slime3H = 0;
+            slime3V = -200;
+        }
+    })
+
+
+    onUpdate(() => {
+        slime1.move(slime1H, slime1V);
+        slime2.move(slime2H, slime2V);
+        slime3.move(slime3H, slime3V);
+
+        if(slime1.pos.x == player.pos.x || (slime1.pos.x - player.pos.x < 2 && slime1.pos.x - player.pos.x > 0) || (player.pos.x - slime1.pos.x < 2 && player.pos.x - slime1.pos.x > 0)) {
+            if(slime1.pos.y < player.pos.y) {
+                slime1V = 200;
+                slime1H = 0;
+            } else {
+                slime1V = -200;
+                slime1H = 0;
+            }
+        } else if (slime1.pos.y == player.pos.y || (slime1.pos.y - player.pos.y < 2 && slime1.pos.y - player.pos.y > 0) || (player.pos.y - slime1.pos.y < 2 && player.pos.y - slime1.pos.y > 0)) {
+            if(slime1.pos.x < player.pos.x) {
+                slime1V = 0;
+                slime1H = 200;
+            } else {
+                slime1V = 0;
+                slime1H = -200;
+            }
+        }
+
+        if(slime2.pos.x == player.pos.x || (slime2.pos.x - player.pos.x < 2 && slime2.pos.x - player.pos.x > 0) || (player.pos.x - slime2.pos.x < 2 && player.pos.x - slime2.pos.x > 0)) {
+            if(slime2.pos.y < player.pos.y) {
+                slime2V = 200;
+                slime2H = 0;
+            } else {
+                slime2V = -200;
+                slime2H = 0;
+            }
+        } else if (slime2.pos.y == player.pos.y || (slime2.pos.y - player.pos.y < 2 && slime2.pos.y - player.pos.y > 0) || (player.pos.y - slime2.pos.y < 2 && player.pos.y - slime2.pos.y > 0)) {
+            if(slime2.pos.x < player.pos.x) {
+                slime2V = 0;
+                slime2H = 200;
+            } else {
+                slime2V = 0;
+                slime2H = -200;
+            }
+        }
+
+        if(slime3.pos.x == player.pos.x || (slime3.pos.x - player.pos.x < 2 && slime3.pos.x - player.pos.x > 0) || (player.pos.x - slime3.pos.x < 2 && player.pos.x - slime3.pos.x > 0)) {
+            if(slime3.pos.y < player.pos.y) {
+                slime3V = 200;
+                slime3H = 0;
+            } else {
+                slime3V = -200;
+                slime3H = 0;
+            }
+        } else if (slime3.pos.y == player.pos.y || (slime3.pos.y - player.pos.y < 2 && slime3.pos.y - player.pos.y > 0) || (player.pos.y - slime3.pos.y < 2 && player.pos.y - slime3.pos.y > 0)) {
+            if(slime3.pos.x < player.pos.x) {
+                slime3V = 0;
+                slime3H = 200;
+            } else {
+                slime3V = 0;
+                slime3H = -200;
+            }
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 scene("boss1", () => {
 
@@ -1300,7 +1830,7 @@ scene("boss1", () => {
 
     let invencivel = false;
     player.onCollide("queenSlime", () => {
-        if(!invencivel) {
+        if (!invencivel) {
             faseBoss++;
             queenSlime.hurt(1);
             shake(20);
@@ -1423,6 +1953,9 @@ scene("boss1", () => {
 
 if (localStorage.getItem("nivel") == "nivel1" || !localStorage.getItem("nivel")) {
     go("nivel1");
+}
+if (localStorage.getItem("nivel") == "nivel2") {
+    go("nivel2");
 }
 if (localStorage.getItem("nivel") == "boss1") {
     go("boss1");
