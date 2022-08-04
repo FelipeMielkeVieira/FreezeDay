@@ -900,14 +900,7 @@ scene("boss1", () => {
 
     loop(1, () => {
 
-        if (scoreSeg < 60) {
-            scoreSeg++;
-        } else {
-            scoreSeg = 0;
-            scoreMin++;
-        }
         if (morto == false) {
-
             if (scoreSeg < 60) {
                 scoreSeg++;
             } else {
@@ -1305,11 +1298,18 @@ scene("boss1", () => {
         }
     }
 
+    let invencivel = false;
     player.onCollide("queenSlime", () => {
-        faseBoss++;
-        queenSlime.hurt(1);
-        shake(20);
-        trocarFase();
+        if(!invencivel) {
+            faseBoss++;
+            queenSlime.hurt(1);
+            shake(20);
+            trocarFase();
+            invencivel = true;
+            setTimeout(() => {
+                invencivel = false;
+            }, 3000);
+        }
     })
 
     let botaoRefazer;
