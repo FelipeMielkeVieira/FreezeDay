@@ -188,7 +188,7 @@ scene("nivel1", () => {
         "redSlime",
         "wall",
         sprite("redSlimeD"),
-        pos(totalWidth * 0.03, totalHeight * 0.05),
+        pos(totalWidth * 0.1, totalHeight * 0.05),
         area(),
         solid(),
         scale(1.5)
