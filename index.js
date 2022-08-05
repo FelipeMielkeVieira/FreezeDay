@@ -15,8 +15,12 @@ app.get("/db", async (req, res) => {
   res.json(await crud.buscar("jogadores"));
 });
 
-app.get("/niveis", function (req, res) {
-  res.sendFile(path.join(__dirname, "./public/nivel.html"));
+app.get("/mundo1", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/niveis/mundo1.html"));
+});
+
+app.get("/mundo2", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/niveis/mundo2.html"));
 });
 
 app.post("/", async (req, res) => {

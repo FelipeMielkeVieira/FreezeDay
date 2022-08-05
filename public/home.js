@@ -9,6 +9,6 @@ async function jogar() {
     console.log("nome: ", nomeJogador);
     await criarJogador(nomeJogador);
     if (nomeJogador) {
-        window.location.href = "http://localhost:3000/niveis"
+        window.location.href = "http://localhost:3000/mundo1"
     }
 }

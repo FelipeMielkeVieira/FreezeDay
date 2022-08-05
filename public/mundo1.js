@@ -1243,56 +1243,86 @@ scene("nivel2", () => {
     ])
 
     slime1.onCollide("wall", () => {
-        if(slime1.pos.x < player.pos.x) {
-            slime1H = 200;
-            slime1V = 0;
-        } else
-        if(slime1.pos.x > player.pos.x) {
-            slime1H = -200;
-            slime1V = 0;
-        } else
-        if(slime1.pos.y < player.pos.y) {
-            slime1H = 0;
-            slime1V = 200;
-        } else {
-            slime1H = 0;
-            slime1V = -200;
+        let numero = randi(0, 4);
+        if (numero == 0) {
+            if (slime1V != 200) {
+                slime1H = 0;
+                slime1V = -200;
+            }
+        }
+        if (numero == 1) {
+            if (slime1H != -200) {
+                slime1H = 200;
+                slime1V = 0;
+            }
+        }
+        if (numero == 2) {
+            if (slime1V != -200) {
+                slime1H = 0;
+                slime1V = 200;
+            }
+        }
+        if (numero == 3) {
+            if (slime1H != 200) {
+                slime1H = -200;
+                slime1V = 0;
+            }
         }
     })
 
     slime2.onCollide("wall", () => {
-        if(slime2.pos.x < player.pos.x) {
-            slime2H = 200;
-            slime2V = 0;
-        } else
-        if(slime2.pos.x > player.pos.x) {
-            slime2H = -200;
-            slime2V = 0;
-        } else
-        if(slime2.pos.y < player.pos.y) {
-            slime2H = 0;
-            slime2V = 200;
-        } else {
-            slime2H = 0;
-            slime2V = -200;
+        let numero = randi(0, 4);
+        if (numero == 0) {
+            if (slime2V != 200) {
+                slime2H = 0;
+                slime2V = -200;
+            }
+        }
+        if (numero == 1) {
+            if (slime2H != -200) {
+                slime2H = 200;
+                slime2V = 0;
+            }
+        }
+        if (numero == 2) {
+            if (slime2V != -200) {
+                slime2H = 0;
+                slime2V = 200;
+            }
+        }
+        if (numero == 3) {
+            if (slime2H != 200) {
+                slime2H = -200;
+                slime2V = 0;
+            }
         }
     })
 
     slime3.onCollide("wall", () => {
-        if(slime3.pos.x < player.pos.x) {
-            slime3H = 200;
-            slime3V = 0;
-        } else
-        if(slime3.pos.x > player.pos.x) {
-            slime3H = -200;
-            slime3V = 0;
-        } else
-        if(slime3.pos.y < player.pos.y) {
-            slime3H = 0;
-            slime3V = 200;
-        } else {
-            slime3H = 0;
-            slime3V = -200;
+        let numero = randi(0, 4);
+        if (numero == 0) {
+            if (slime3V != 200) {
+                slime3H = 0;
+                slime3V = -200;
+            }
+        }
+        if (numero == 1) {
+            if (slime3H != -200) {
+                slime3H = 200;
+                slime3V = 0;
+            }
+        }
+        if (numero == 2) {
+            if (slime3V != -200) {
+                slime3H = 0;
+                slime3V = 200;
+            }
+        }
+        if (numero == 3) {
+            if (slime3H != 200) {
+                slime3H = -200;
+                slime3V = 0;
+            }
         }
     })
 
@@ -1304,56 +1334,193 @@ scene("nivel2", () => {
 
         if(slime1.pos.x == player.pos.x || (slime1.pos.x - player.pos.x < 2 && slime1.pos.x - player.pos.x > 0) || (player.pos.x - slime1.pos.x < 2 && player.pos.x - slime1.pos.x > 0)) {
             if(slime1.pos.y < player.pos.y) {
-                slime1V = 200;
+                slime1V = 300;
                 slime1H = 0;
             } else {
-                slime1V = -200;
+                slime1V = -300;
                 slime1H = 0;
             }
         } else if (slime1.pos.y == player.pos.y || (slime1.pos.y - player.pos.y < 2 && slime1.pos.y - player.pos.y > 0) || (player.pos.y - slime1.pos.y < 2 && player.pos.y - slime1.pos.y > 0)) {
             if(slime1.pos.x < player.pos.x) {
                 slime1V = 0;
-                slime1H = 200;
+                slime1H = 300;
             } else {
                 slime1V = 0;
-                slime1H = -200;
+                slime1H = -300;
             }
         }
 
         if(slime2.pos.x == player.pos.x || (slime2.pos.x - player.pos.x < 2 && slime2.pos.x - player.pos.x > 0) || (player.pos.x - slime2.pos.x < 2 && player.pos.x - slime2.pos.x > 0)) {
             if(slime2.pos.y < player.pos.y) {
-                slime2V = 200;
+                slime2V = 300;
                 slime2H = 0;
             } else {
-                slime2V = -200;
+                slime2V = -300;
                 slime2H = 0;
             }
         } else if (slime2.pos.y == player.pos.y || (slime2.pos.y - player.pos.y < 2 && slime2.pos.y - player.pos.y > 0) || (player.pos.y - slime2.pos.y < 2 && player.pos.y - slime2.pos.y > 0)) {
             if(slime2.pos.x < player.pos.x) {
                 slime2V = 0;
-                slime2H = 200;
+                slime2H = 300;
             } else {
                 slime2V = 0;
-                slime2H = -200;
+                slime2H = -300;
             }
         }
 
         if(slime3.pos.x == player.pos.x || (slime3.pos.x - player.pos.x < 2 && slime3.pos.x - player.pos.x > 0) || (player.pos.x - slime3.pos.x < 2 && player.pos.x - slime3.pos.x > 0)) {
             if(slime3.pos.y < player.pos.y) {
-                slime3V = 200;
+                slime3V = 300;
                 slime3H = 0;
             } else {
-                slime3V = -200;
+                slime3V = -300;
                 slime3H = 0;
             }
         } else if (slime3.pos.y == player.pos.y || (slime3.pos.y - player.pos.y < 2 && slime3.pos.y - player.pos.y > 0) || (player.pos.y - slime3.pos.y < 2 && player.pos.y - slime3.pos.y > 0)) {
             if(slime3.pos.x < player.pos.x) {
                 slime3V = 0;
-                slime3H = 200;
+                slime3H = 300;
             } else {
                 slime3V = 0;
-                slime3H = -200;
+                slime3H = -300;
             }
+        }
+    })
+
+    function jogadorMorreu() {
+        shake(70);
+        add([
+            text("Game Over!"),
+            pos(totalWidth * 0.425, totalHeight * 0.36),
+            scale(3),
+            color(255, 0, 0),
+            layer("3")
+        ])
+        add([
+            "botaoRefazer",
+            rect(100, 15),
+            pos(totalWidth * 0.4, totalHeight * 0.42),
+            scale(3),
+            color(255, 255, 255),
+            outline(1),
+            area(),
+            layer("3")
+        ])
+        add([
+            text("Jogar Novamente"),
+            pos(totalWidth * 0.425, totalHeight * 0.435),
+            scale(2),
+            layer("3")
+        ])
+    }
+
+    onClick("botaoRefazer", () => {
+        go("nivel2");
+    })
+
+    player.onCollide("slime1", () => {
+        jogadorMorreu();
+        morto = true;
+        destroyAll("player");
+    })
+
+    player.onCollide("slime2", () => {
+        jogadorMorreu();
+        morto = true;
+        destroyAll("player");
+    })
+
+    player.onCollide("slime3", () => {
+        jogadorMorreu();
+        morto = true;
+        destroyAll("player");
+    })
+
+    const portal = add([
+        "portal",
+        sprite("closedPortal"),
+        pos(totalWidth * 0.92, totalHeight * 0.05),
+        area(),
+        scale(2)
+    ])
+
+    const redCrystal = add([
+        "redCrystal",
+        sprite("redCrystal"),
+        pos(totalWidth * 0.25, totalHeight * 0.9),
+        area()
+    ])
+
+    const blueCrystal = add([
+        "blueCrystal",
+        sprite("blueCrystal"),
+        pos(totalWidth * 0.25, totalHeight * 0.05),
+        area()
+    ])
+
+    const greenCrystal = add([
+        "greenCrystal",
+        sprite("greenCrystal"),
+        pos(totalWidth * 0.325, totalHeight * 0.475),
+        area()
+    ])
+
+    const redCrystal2 = add([
+        "redCrystal",
+        sprite("redCrystal"),
+        pos(totalWidth * 0.7, totalHeight * 0.9),
+        area()
+    ])
+
+    const blueCrystal2 = add([
+        "blueCrystal",
+        sprite("blueCrystal"),
+        pos(totalWidth * 0.7, totalHeight * 0.05),
+        area()
+    ])
+
+    const greenCrystal2 = add([
+        "greenCrystal",
+        sprite("greenCrystal"),
+        pos(totalWidth * 0.625, totalHeight * 0.475),
+        area()
+    ])
+
+    let gCrystal = 0;
+    let rCrystal = 0;
+    let bCrystal = 0;
+
+    player.onCollide("greenCrystal", (cristal) => {
+        destroy(cristal);
+        gCrystal++;
+
+        if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("redCrystal", (cristal) => {
+        destroy(cristal);
+        rCrystal++;
+
+        if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("blueCrystal", (cristal) => {
+        destroy(cristal);
+        bCrystal++;
+
+        if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("portal", () => {
+        if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
+            localStorage.setItem("nivel", "boss1");
+            go("boss1");
         }
     })
 })
@@ -1880,8 +2047,6 @@ scene("boss1", () => {
         go("boss1");
     })
 
-    let botaoVoltar;
-
     function vitoria() {
         barraVida1.color = rgb(211, 211, 211);
         add([
@@ -1890,8 +2055,8 @@ scene("boss1", () => {
             scale(3),
             color(0, 255, 0)
         ])
-        botaoVoltar = add([
-            "botaoRefazer",
+        add([
+            "botaoContinuar",
             rect(100, 15),
             pos(totalWidth * 0.4, totalHeight * 0.42),
             scale(3),
@@ -1905,6 +2070,11 @@ scene("boss1", () => {
             scale(2),
         ])
     }
+
+    onClick("botaoContinuar", () => {
+        localStorage.setItem("nivel", "nivel4");
+        window.location.href("localhost:3000/mundo2")
+    })
 
     queenSlime.on("death", () => {
         vitoria();
@@ -1959,4 +2129,7 @@ if (localStorage.getItem("nivel") == "nivel2") {
 }
 if (localStorage.getItem("nivel") == "boss1") {
     go("boss1");
+}
+if(localStorage.getItem("nivel") == "nivel4") {
+    window.location.href("localhost:3000/mundo2")
 }
