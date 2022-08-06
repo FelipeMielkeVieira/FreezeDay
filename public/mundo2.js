@@ -17,6 +17,8 @@ loadSprite("picoleAzul", "/sprites/picoleAzul.png");
 loadSprite("picoleVermelho", "/sprites/picoleVermelho.png");
 loadSprite("picoleVerde", "/sprites/picoleVerde.png");
 
+loadSprite("agua", "/sprites/agua.png");
+
 scene("nivel4", () => {
 
     layers([
@@ -165,7 +167,17 @@ scene("nivel4", () => {
         outline(2)
     ])
 
-    loop(2.5, () => {
+    //A1
+    add([
+        "agua",
+        rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
+        pos(10, totalHeight * 0.35),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    loop(4, () => {
         add([
             "picole",
             sprite("picoleAzul"),
@@ -192,12 +204,30 @@ scene("nivel4", () => {
         ])
     })
 
+    let picole1H = -100;
+    loop(1, () => {
+        if(picole1H == -100) {
+            picole1H = 0;
+        } else {
+            picole1H = -100;
+        }
+    })
+
+    let picole2H = 100;
+    loop(1, () => {
+        if(picole2H == 100) {
+            picole2H = 0;
+        } else {
+            picole2H = 100;
+        }
+    })
+
     onUpdate("picole", (picole) => {
-        picole.move(-100, 0)
+        picole.move(picole1H, 0)
     })
 
     onUpdate("picole2", (picole) => {
-        picole.move(100, 0)
+        picole.move(picole2H, 0)
     })
 
     onCollide("picole", "wall", (picole) => {
@@ -242,6 +272,11 @@ scene("nivel4", () => {
     })
 
     player.onCollide("picole", () => {
+        destroyAll("player");
+        jogadorMorreu();
+    })
+
+    player.onCollide("picole2", () => {
         destroyAll("player");
         jogadorMorreu();
     })
