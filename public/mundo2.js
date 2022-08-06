@@ -172,13 +172,37 @@ scene("nivel4", () => {
             scale(2),
             pos(totalWidth - 30, totalHeight * 0.04),
         ])
+        add([
+            "picole2",
+            sprite("picoleVermelho"),
+            area(),
+            solid(),
+            scale(2),
+            pos(30, totalHeight * 0.28)
+        ])
+        add([
+            "picole",
+            sprite("picoleVerde"),
+            area(),
+            solid(),
+            scale(2),
+            pos(totalWidth - 30, totalHeight * 0.53)
+        ])
     })
 
     onUpdate("picole", (picole) => {
         picole.move(-100, 0)
     })
 
+    onUpdate("picole2", (picole) => {
+        picole.move(100, 0)
+    })
+
     onCollide("picole", "wall", (picole) => {
+        destroy(picole)
+    })
+
+    onCollide("picole2", "wall", (picole) => {
         destroy(picole)
     })
 
@@ -212,11 +236,11 @@ scene("nivel4", () => {
     }
 
     onClick("botaoRefazer", () => {
-        go("nivel1");
+        go("nivel4");
     })
 
     player.onCollide("picole", () => {
-        destroyAll(player);
+        destroyAll("player");
         jogadorMorreu();
     })
 
