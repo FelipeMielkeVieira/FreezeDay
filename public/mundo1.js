@@ -2131,5 +2131,5 @@ if (localStorage.getItem("nivel") == "boss1") {
     go("boss1");
 }
 if(localStorage.getItem("nivel") == "nivel4") {
-    window.location.href("localhost:3000/mundo2")
+    window.location.href = "http://localhost:3000/mundo2";
 }
