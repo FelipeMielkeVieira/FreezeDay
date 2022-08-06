@@ -12,6 +12,7 @@ kaboom({
 });
 
 loadSprite("playerD", "/sprites/playerD.png");
+loadSprite("playerR", "/sprites/playerR.png");
 loadSprite("picoleAzul", "/sprites/picoleAzul.png");
 loadSprite("picoleVermelho", "/sprites/picoleVermelho.png");
 loadSprite("picoleVerde", "/sprites/picoleVerde.png");
@@ -78,6 +79,7 @@ scene("nivel4", () => {
 
     onKeyDown("right", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"))
     })
     onKeyDown("d", () => {
         player.move(speed, 0);
