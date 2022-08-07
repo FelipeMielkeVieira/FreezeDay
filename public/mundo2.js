@@ -63,6 +63,8 @@ scene("nivel4", () => {
         solid(),
     ])
 
+    let ultimoMov = "S"
+
     const player = add([
         "player",
         sprite("playerD"),
@@ -74,31 +76,62 @@ scene("nivel4", () => {
 
     onKeyDown("left", () => {
         player.move(-speed, 0);
+        ultimoMov = "A"
     })
     onKeyDown("a", () => {
         player.move(-speed, 0);
+        ultimoMov = "A"
     })
 
     onKeyDown("right", () => {
         player.move(speed, 0);
-        player.use(sprite("playerR"))
+        ultimoMov = "D"
+        // player.use(sprite("playerR"))
     })
     onKeyDown("d", () => {
         player.move(speed, 0);
+        ultimoMov = "D"
     })
 
     onKeyDown("up", () => {
         player.move(0, -speed);
+        ultimoMov = "W"
     })
     onKeyDown("w", () => {
         player.move(0, -speed);
+        ultimoMov = "W"
     })
 
     onKeyDown("down", () => {
         player.move(0, speed);
+        ultimoMov = "S"
     })
     onKeyDown("s", () => {
         player.move(0, speed);
+        ultimoMov = "S"
+    })
+
+    let cooldownDash = false;
+    
+    onKeyPress("shift", () => {
+        if (!cooldownDash) {
+            if (ultimoMov == "S") {
+                player.moveTo(player.pos.x, player.pos.y + (totalHeight * 0.225))
+            }
+            if (ultimoMov == "W") {
+                player.moveTo(player.pos.x, player.pos.y - (totalHeight * 0.225));
+            }
+            if (ultimoMov == "D") {
+                player.moveTo(player.pos.x + (totalWidth * 0.1), player.pos.y)
+            }
+            if (ultimoMov == "A") {
+                player.moveTo(player.pos.x - (totalWidth * 0.1), player.pos.y)
+            }
+            cooldownDash = true;
+            setTimeout(() => {
+                cooldownDash = false;
+            }, 3000);
+        }
     })
 
     //R1
@@ -171,7 +204,107 @@ scene("nivel4", () => {
     add([
         "agua",
         rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
+        pos(10, totalHeight * 0.1),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A2
+    add([
+        "agua",
+        rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
         pos(10, totalHeight * 0.35),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A3
+    add([
+        "agua",
+        rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
+        pos(10, totalHeight * 0.6),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A4
+    add([
+        "agua",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.45, totalHeight * 0.1),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A5
+    add([
+        "agua",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.45, totalHeight * 0.35),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A6
+    add([
+        "agua",
+        rect(totalWidth * 0.075, totalHeight * 0.15),
+        pos(totalWidth * 0.45, totalHeight * 0.6),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A7
+    add([
+        "agua",
+        rect(totalWidth * 0.093, totalHeight * 0.15),
+        pos(totalWidth * 0.9, totalHeight * 0.1),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A8
+    add([
+        "agua",
+        rect(totalWidth * 0.093, totalHeight * 0.15),
+        pos(totalWidth * 0.9, totalHeight * 0.35),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A9
+    add([
+        "agua",
+        rect(totalWidth * 0.093, totalHeight * 0.15),
+        pos(totalWidth * 0.9, totalHeight * 0.6),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A10
+    add([
+        "agua",
+        rect(totalWidth * 0.375, totalHeight * 0.235),
+        pos(totalWidth * 0.075, totalHeight * 0.75),
+        color(0, 0, 255),
+        solid(),
+        area()
+    ])
+
+    //A11
+    add([
+        "agua",
+        rect(totalWidth * 0.375, totalHeight * 0.235),
+        pos(totalWidth * 0.525, totalHeight * 0.75),
         color(0, 0, 255),
         solid(),
         area()
@@ -206,7 +339,7 @@ scene("nivel4", () => {
 
     let picole1H = -100;
     loop(1, () => {
-        if(picole1H == -100) {
+        if (picole1H == -100) {
             picole1H = 0;
         } else {
             picole1H = -100;
@@ -215,7 +348,7 @@ scene("nivel4", () => {
 
     let picole2H = 100;
     loop(1, () => {
-        if(picole2H == 100) {
+        if (picole2H == 100) {
             picole2H = 0;
         } else {
             picole2H = 100;
@@ -283,6 +416,6 @@ scene("nivel4", () => {
 
 })
 
-if(localStorage.getItem("nivel") == "nivel4") {
+if (localStorage.getItem("nivel") == "nivel4") {
     go("nivel4");
 }
