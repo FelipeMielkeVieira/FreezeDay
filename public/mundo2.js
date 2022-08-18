@@ -17,6 +17,13 @@ loadSprite("picoleAzul", "/sprites/picoleAzul.png");
 loadSprite("picoleVermelho", "/sprites/picoleVermelho.png");
 loadSprite("picoleVerde", "/sprites/picoleVerde.png");
 
+loadSprite("closedPortal", "/sprites/closedPortal.png");
+loadSprite("openPortal", "/sprites/openPortal.png");
+
+loadSprite("redCrystal", "/sprites/redCrystal.png");
+loadSprite("greenCrystal", "/sprites/greenCrystal.png");
+loadSprite("blueCrystal", "/sprites/blueCrystal.png");
+
 loadSprite("agua", "/sprites/agua.png");
 
 scene("nivel4", () => {
@@ -116,10 +123,14 @@ scene("nivel4", () => {
     onKeyPress("shift", () => {
         if (!cooldownDash) {
             if (ultimoMov == "S") {
-                player.moveTo(player.pos.x, player.pos.y + (totalHeight * 0.225))
+                if(!((player.pos.x > totalWidth * 0.075 && player.pos.x < totalWidth * 0.45) || (player.pos.x > totalWidth * 0.525 && player.pos.x < totalWidth * 0.9))) {
+                    player.moveTo(player.pos.x, player.pos.y + (totalHeight * 0.175))
+                }
             }
             if (ultimoMov == "W") {
-                player.moveTo(player.pos.x, player.pos.y - (totalHeight * 0.225));
+                if(!((player.pos.x > totalWidth * 0.075 && player.pos.x < totalWidth * 0.45) || (player.pos.x > totalWidth * 0.525 && player.pos.x < totalWidth * 0.9))) {
+                    player.moveTo(player.pos.x, player.pos.y - (totalHeight * 0.175))
+                }
             }
             if (ultimoMov == "D") {
                 player.moveTo(player.pos.x + (totalWidth * 0.1), player.pos.y)
@@ -203,8 +214,8 @@ scene("nivel4", () => {
     //A1
     add([
         "agua",
-        rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
-        pos(10, totalHeight * 0.1),
+        rect(totalWidth * 0.075 - 11, totalHeight * 0.075),
+        pos(10, totalHeight * 0.125),
         color(0, 0, 255),
         solid(),
         area()
@@ -213,8 +224,8 @@ scene("nivel4", () => {
     //A2
     add([
         "agua",
-        rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
-        pos(10, totalHeight * 0.35),
+        rect(totalWidth * 0.075 - 11, totalHeight * 0.075),
+        pos(10, totalHeight * 0.375),
         color(0, 0, 255),
         solid(),
         area()
@@ -223,8 +234,8 @@ scene("nivel4", () => {
     //A3
     add([
         "agua",
-        rect(totalWidth * 0.075 - 11, totalHeight * 0.15),
-        pos(10, totalHeight * 0.6),
+        rect(totalWidth * 0.075 - 11, totalHeight * 0.075),
+        pos(10, totalHeight * 0.625),
         color(0, 0, 255),
         solid(),
         area()
@@ -233,8 +244,8 @@ scene("nivel4", () => {
     //A4
     add([
         "agua",
-        rect(totalWidth * 0.075, totalHeight * 0.15),
-        pos(totalWidth * 0.45, totalHeight * 0.1),
+        rect(totalWidth * 0.075, totalHeight * 0.075),
+        pos(totalWidth * 0.45, totalHeight * 0.125),
         color(0, 0, 255),
         solid(),
         area()
@@ -243,8 +254,8 @@ scene("nivel4", () => {
     //A5
     add([
         "agua",
-        rect(totalWidth * 0.075, totalHeight * 0.15),
-        pos(totalWidth * 0.45, totalHeight * 0.35),
+        rect(totalWidth * 0.075, totalHeight * 0.075),
+        pos(totalWidth * 0.45, totalHeight * 0.375),
         color(0, 0, 255),
         solid(),
         area()
@@ -253,8 +264,8 @@ scene("nivel4", () => {
     //A6
     add([
         "agua",
-        rect(totalWidth * 0.075, totalHeight * 0.15),
-        pos(totalWidth * 0.45, totalHeight * 0.6),
+        rect(totalWidth * 0.075, totalHeight * 0.075),
+        pos(totalWidth * 0.45, totalHeight * 0.625),
         color(0, 0, 255),
         solid(),
         area()
@@ -263,8 +274,8 @@ scene("nivel4", () => {
     //A7
     add([
         "agua",
-        rect(totalWidth * 0.093, totalHeight * 0.15),
-        pos(totalWidth * 0.9, totalHeight * 0.1),
+        rect(totalWidth * 0.093, totalHeight * 0.075),
+        pos(totalWidth * 0.9, totalHeight * 0.125),
         color(0, 0, 255),
         solid(),
         area()
@@ -273,8 +284,8 @@ scene("nivel4", () => {
     //A8
     add([
         "agua",
-        rect(totalWidth * 0.093, totalHeight * 0.15),
-        pos(totalWidth * 0.9, totalHeight * 0.35),
+        rect(totalWidth * 0.093, totalHeight * 0.075),
+        pos(totalWidth * 0.9, totalHeight * 0.375),
         color(0, 0, 255),
         solid(),
         area()
@@ -283,8 +294,8 @@ scene("nivel4", () => {
     //A9
     add([
         "agua",
-        rect(totalWidth * 0.093, totalHeight * 0.15),
-        pos(totalWidth * 0.9, totalHeight * 0.6),
+        rect(totalWidth * 0.093, totalHeight * 0.075),
+        pos(totalWidth * 0.9, totalHeight * 0.625),
         color(0, 0, 255),
         solid(),
         area()
@@ -292,7 +303,7 @@ scene("nivel4", () => {
 
     //A10
     add([
-        "agua",
+        "agua2",
         rect(totalWidth * 0.375, totalHeight * 0.235),
         pos(totalWidth * 0.075, totalHeight * 0.75),
         color(0, 0, 255),
@@ -302,7 +313,7 @@ scene("nivel4", () => {
 
     //A11
     add([
-        "agua",
+        "agua2",
         rect(totalWidth * 0.375, totalHeight * 0.235),
         pos(totalWidth * 0.525, totalHeight * 0.75),
         color(0, 0, 255),
@@ -414,8 +425,82 @@ scene("nivel4", () => {
         jogadorMorreu();
     })
 
+    const portal = add([
+        "portal",
+        sprite("closedPortal"),
+        pos(totalWidth * 0.92, totalHeight * 0.8),
+        area(),
+        scale(2)
+    ])
+
+    const redCrystal = add([
+        "redCrystal",
+        sprite("redCrystal"),
+        pos(totalWidth * 0.7, totalHeight * 0.275),
+        area()
+    ])
+
+    const blueCrystal = add([
+        "blueCrystal",
+        sprite("blueCrystal"),
+        pos(totalWidth * 0.275, totalHeight * 0.025),
+        area()
+    ])
+
+    const greenCrystal = add([
+        "greenCrystal",
+        sprite("greenCrystal"),
+        pos(totalWidth * 0.475, totalHeight * 0.75),
+        area()
+    ])
+
+    let gCrystal = false;
+    let rCrystal = false;
+    let bCrystal = false;
+
+    player.onCollide("greenCrystal", () => {
+        destroyAll("greenCrystal");
+        gCrystal = true;
+
+        if (gCrystal && rCrystal && bCrystal) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("redCrystal", () => {
+        destroyAll("redCrystal");
+        rCrystal = true;
+
+        if (gCrystal && rCrystal && bCrystal) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("blueCrystal", () => {
+        destroyAll("blueCrystal");
+        bCrystal = true;
+
+        if (gCrystal && rCrystal && bCrystal) {
+            portal.use(sprite("openPortal"));
+        }
+    })
+
+    player.onCollide("portal", () => {
+        if (gCrystal && rCrystal && bCrystal) {
+            localStorage.setItem("nivel", "nivel2");
+            go("nivel5");
+        }
+    })
+})
+
+scene("nivel5", () => {
+    
 })
 
 if (localStorage.getItem("nivel") == "nivel4") {
     go("nivel4");
+}
+
+if (localStorage.getItem("nivel") == "nivel5") {
+    go("nivel5");
 }
