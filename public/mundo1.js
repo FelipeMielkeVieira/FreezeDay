@@ -226,7 +226,7 @@ scene("tutorial", () => {
             textLegenda.text = "Use as teclas WASD (Ou as Setas) para mover o jogador";
         }
         if(parteTutorial == 2) {
-            textLegenda.text = "Colete todos os cristais para abrir o portal e fugir do gelo";
+            textLegenda.text = "Colete todos os cristais para abrir o portal e fugir do gelo\n\nQuanto menor seu tempo, mais pontos!";
             add([
                 "crystal",
                 sprite("greenCrystal"),
