@@ -17,3 +17,7 @@ async function jogar() {
 function ranking(){
     window.location.href = "http://localhost:3000/rankings";
 }
+
+if(!localStorage.getItem("lista")) {
+    localStorage.setItem("lista", JSON.stringify({lista:[{nome: "Vieira", tempo: 178}, {nome: "Matheus", tempo: 170}, {nome: "Kenzo", tempo: 180}]}))
+}

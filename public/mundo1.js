@@ -35,16 +35,14 @@ loadSprite("halfSpike", "/sprites/halfSpike.png");
 
 loadSprite("slimeBravo", "/sprites/slimeBravo.png");
 
+loadSound("musica1", "./audio/audio1.mp3");
+loadSound("musica2", "./audio/audio2.mp3");
 
 let scoreSeg = 0;
 let scoreMin = 0;
 let timer1 = false;
 let timer2 = false;
 let timer3 = false;
-
-if(!localStorage.getItem("lista")) {
-    localStorage.setItem("lista", JSON.stringify({lista:[{nome: "Vieira", tempo: 178}]}))
-}
 
 
 async function backgroundFase() {
@@ -1008,6 +1006,7 @@ scene("nivel1", () => {
         if (gCrystal && rCrystal && bCrystal) {
             localStorage.setItem("nivel", "nivel2");
             timer1 = false;
+            music.pause();
             go("nivel2");
         }
     })
@@ -1071,6 +1070,12 @@ scene("nivel1", () => {
     timer1 = true;
     timerPontuacao();
 
+    const music = play("musica1", {
+        volume: 0.2,
+        loop: true
+    })
+    
+    music.play()
 })
 
 
@@ -1776,9 +1781,17 @@ scene("nivel2", () => {
         if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
             localStorage.setItem("nivel", "boss1");
             timer2 = false;
+            music.pause()
             go("boss1");
         }
     })
+
+    const music = play("musica1", {
+        volume: 0.2,
+        loop: true
+    })
+    
+    music.play()
 })
 
 
@@ -2322,6 +2335,7 @@ scene("boss1", () => {
     function vitoria() {
         barraVida1.color = rgb(211, 211, 211);
         timer3 = false;
+        music.pause();
         add([
             text("Vitoria!"),
             pos(totalWidth * 0.44, totalHeight * 0.36),
@@ -2395,6 +2409,13 @@ scene("boss1", () => {
 
     criarIntervalo(15000);
     criarEspinhos();
+
+    const music = play("musica2", {
+        volume: 0.2,
+        loop: true
+    })
+    
+    music.play()
 })
 
 if(!localStorage.getItem("nivel")) {
