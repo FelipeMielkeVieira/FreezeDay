@@ -13,3 +13,7 @@ async function jogar() {
         alert("Digite um nome de jogador!")
     }
 }
+
+function ranking(){
+    window.location.href = "http://localhost:3000/rankings";
+}

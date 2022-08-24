@@ -1,13 +1,97 @@
-body{
+body {
     padding: 0;
+    overflow: hidden;
     background-color: #cccccc;
     background-size: 100%;
     height: 100%;
 }
 
+.botaoVoltar{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
 .principal {
     height: 98vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.containerRanking {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    height: 500px;
+    padding: 10px;
+    background-color: #87cefa;
+    border: none;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.fundo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 620px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #87cefa;
+}
+
+table {
+    margin-top: 10px;
+    width: 70%;
+    border: solid 2px white;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 5px;
+    border: solid 2px white;
+    font-size: 20px;
+}
+
+td {
+    padding: 5px;
+    text-align: center;
+    border: solid 2px white;
+    font-size: 18px;
+}
+
+table tr:nth-child(1) {
+    background-color: #4cb2f1;
+}
+
+table tr:nth-child(2n+3) {
+    background-color: #63bef7;
+}
+
+.ranking {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(97, 159, 240);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid white;
+    /* creates padding around scroll thumb */
 }
