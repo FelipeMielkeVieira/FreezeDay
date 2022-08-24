@@ -1,3 +1,5 @@
+const crud = require("./crud");
+
 let totalWidth = window.innerWidth * 0.98;
 let totalHeight = window.innerHeight * 0.96;
 
@@ -1688,7 +1690,7 @@ scene("boss1", () => {
         pos(totalWidth * 0.44, totalHeight * 0.4),
         area(),
         scale(3),
-        health(5)
+        health(0)
     ])
 
     function criarEspinhos() {
@@ -2072,8 +2074,9 @@ scene("boss1", () => {
     }
 
     onClick("botaoContinuar", () => {
-        localStorage.setItem("nivel", "nivel4");
-        window.location.href("localhost:3000/mundo2")
+        localStorage.removeItem("nivel");
+        crud.criar("Players", undefined, {nome: localStorage.getItem("jogador"), tempo: (scoreMin * 60 + scoreSeg)});
+        window.location.href("localhost:3000");
     })
 
     queenSlime.on("death", () => {
