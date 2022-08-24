@@ -276,6 +276,13 @@ scene("nivel1", () => {
 
     let morto = false;
 
+    let music = play("musica1", {
+        volume: 0.2,
+        loop: true
+    })
+    
+    music.play()
+
     layers([
         "1",
         "2",
@@ -924,6 +931,7 @@ scene("nivel1", () => {
 
     function jogadorMorreu() {
         shake(70);
+        music.pause();
         add([
             text("Game Over!"),
             pos(totalWidth * 0.425, totalHeight * 0.36),
@@ -1006,7 +1014,7 @@ scene("nivel1", () => {
         if (gCrystal && rCrystal && bCrystal) {
             localStorage.setItem("nivel", "nivel2");
             timer1 = false;
-            music.pause();
+            music.stop();
             go("nivel2");
         }
     })
@@ -1069,13 +1077,6 @@ scene("nivel1", () => {
 
     timer1 = true;
     timerPontuacao();
-
-    const music = play("musica1", {
-        volume: 0.2,
-        loop: true
-    })
-    
-    music.play()
 })
 
 
@@ -1105,6 +1106,13 @@ scene("nivel1", () => {
 scene("nivel2", () => {
 
     let morto = false;
+
+    let music = play("musica1", {
+        volume: 0.2,
+        loop: true
+    })
+    
+    music.play()
 
     layers([
         "1",
@@ -1649,6 +1657,7 @@ scene("nivel2", () => {
 
     function jogadorMorreu() {
         shake(70);
+        music.pause();
         add([
             text("Game Over!"),
             pos(totalWidth * 0.425, totalHeight * 0.36),
@@ -1781,17 +1790,10 @@ scene("nivel2", () => {
         if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
             localStorage.setItem("nivel", "boss1");
             timer2 = false;
-            music.pause()
+            music.stop();
             go("boss1");
         }
     })
-
-    const music = play("musica1", {
-        volume: 0.2,
-        loop: true
-    })
-    
-    music.play()
 })
 
 
@@ -1821,6 +1823,13 @@ scene("nivel2", () => {
 scene("boss1", () => {
 
     let morto = false;
+
+    const music = play("musica2", {
+        volume: 0.2,
+        loop: true
+    })
+    
+    music.play()
 
     layers([
         "1",
@@ -2298,6 +2307,7 @@ scene("boss1", () => {
 
     function jogadorMorreu() {
         shake(70);
+        music.pause();
         add([
             text("Game Over!"),
             pos(totalWidth * 0.425, totalHeight * 0.36),
@@ -2335,7 +2345,7 @@ scene("boss1", () => {
     function vitoria() {
         barraVida1.color = rgb(211, 211, 211);
         timer3 = false;
-        music.pause();
+        music.stop();
         add([
             text("Vitoria!"),
             pos(totalWidth * 0.44, totalHeight * 0.36),
@@ -2409,13 +2419,6 @@ scene("boss1", () => {
 
     criarIntervalo(15000);
     criarEspinhos();
-
-    const music = play("musica2", {
-        volume: 0.2,
-        loop: true
-    })
-    
-    music.play()
 })
 
 if(!localStorage.getItem("nivel")) {
