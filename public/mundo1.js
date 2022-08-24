@@ -839,7 +839,7 @@ scene("nivel1", () => {
         pos(115, 24)
     ]);
 
-    loop(1, () => {
+    function timerPontuacao() {
         if (morto == false) {
             if (scoreSeg < 60) {
                 scoreSeg++;
@@ -851,7 +851,12 @@ scene("nivel1", () => {
 
         scoreMinutos.text = scoreMin;
         scoreSegundos.text = scoreSeg;
-    });
+        setTimeout(() => {
+            timerPontuacao();
+        }, 1000);
+    }
+
+    timerPontuacao();
 
 })
 
@@ -2073,8 +2078,11 @@ scene("boss1", () => {
     }
 
     onClick("botaoContinuar", () => {
-        localStorage.removeItem("nivel");
-        window.location.href("localhost:3000");
+        // localStorage.removeItem("nivel");
+        let lista = JSON.parse(localStorage.getItem("lista")) || {lista: []};
+        lista.lista.push({nome: localStorage.getItem("jogador"), tempo: (scoreMin * 60 + scoreSeg)});
+        localStorage.setItem("lista", JSON.stringify(lista));
+        window.location = "http://localhost:3000";
     })
 
     queenSlime.on("death", () => {
@@ -2130,6 +2138,7 @@ if (localStorage.getItem("nivel") == "nivel2") {
 }
 if (localStorage.getItem("nivel") == "boss1") {
     go("boss1");
+    console.log(JSON.parse(localStorage.getItem("lista")))
 }
 if(localStorage.getItem("nivel") == "nivel4") {
     window.location.href = "http://localhost:3000/mundo2";
