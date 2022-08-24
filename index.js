@@ -1,7 +1,6 @@
-const crud = require("./public/crud/index.js")
-
 const express = require("express");
 const app = express();
+const crud = require("./public/crud");
 
 const path = require("path");
 
@@ -23,13 +22,13 @@ app.get("/mundo2", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/niveis/mundo2.html"));
 });
 
-app.post("/", async (req, res) => {
-  console.log("aaa ", req.body);
-  res.json(await crud.criar("jogadores", null, req.body));
-})
-
 app.get("/rankings", function (req,res){
   res.sendFile(path.join(__dirname, "./public/ranking.html"));
+})
+
+app.post("/", async (req, res) => {
+  console.log(req.body)
+  await crud.criar("Players", undefined, req.body);
 })
   
 app.listen(3000, () => {
