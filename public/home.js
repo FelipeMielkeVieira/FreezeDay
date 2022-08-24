@@ -6,8 +6,10 @@
 
 async function jogar() {
     let nomeJogador = document.querySelector("#nomeUsuario").value;
-    localStorage.setItem("jogador", nomeJogador);
     if (nomeJogador) {
         window.location.href = "http://localhost:3000/mundo1"
+        localStorage.setItem("jogador", nomeJogador);
+    } else {
+        alert("Digite um nome de jogador!")
     }
 }

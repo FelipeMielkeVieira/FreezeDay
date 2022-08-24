@@ -13,6 +13,10 @@ kaboom({
 });
 
 loadSprite("playerD", "/sprites/playerD.png");
+loadSprite("playerR", "/sprites/playerR.png");
+loadSprite("playerL", "/sprites/playerL.png");
+loadSprite("playerU", "/sprites/playerU.png");
+
 loadSprite("redSlimeD", "/sprites/redSlimeD.png");
 loadSprite("greenSlimeD", "/sprites/greenSlimeD.png");
 loadSprite("blueSlimeD", "/sprites/blueSlimeD.png");
@@ -79,6 +83,196 @@ async function backgroundBoss() {
         totalHeight / bgImageBoss.tex.height
     ));
 }
+
+scene("tutorial", () => {
+
+    let parteTutorial = 1;
+
+    const legenda = add([
+        "legenda",
+        rect(totalWidth, totalHeight * 0.2),
+        pos(0, 0),
+        color(0, 0, 255)
+    ])
+
+    let textLegenda = add([
+        pos(totalWidth * 0.1, totalHeight * 0.05),
+        text("Bem Vindo(a) a FreezeDay"),
+        scale(2)
+    ])
+
+    let botao = add([
+        "botao",
+        pos(totalWidth * 0.875, totalHeight * 0.125),
+        rect(totalWidth * 0.1, totalHeight * 0.05),
+        color(0,0,0,0),
+        area()
+    ])
+
+    let textoBotao = add([
+        pos(totalWidth * 0.885, totalHeight * 0.145),
+        text("Continuar"),
+        scale(1.5),
+    ])
+
+    layers([
+        "1",
+        "2",
+        "3"
+    ], "2")
+
+    const borderTop = add([
+        "wall",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderLeft = add([
+        "wall",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(0, 0),
+        area(),
+        solid(),
+    ])
+
+    const borderBottom = add([
+        "wall",
+        rect(totalWidth, 10),
+        color(0, 0, 0, 0),
+        pos(0, totalHeight - 10),
+        area(),
+        solid(),
+    ])
+
+    const borderRight = add([
+        "wall",
+        rect(10, totalHeight),
+        color(0, 0, 0, 0),
+        pos(totalWidth - 10, 0),
+        area(),
+        solid(),
+    ])
+
+    const player = add([
+        "player",
+        sprite("playerD"),
+        pos(totalWidth * 0.03, totalHeight * 0.85),
+        area(),
+        solid(),
+        scale(1.5)
+    ])
+
+    onKeyDown("left", () => {
+        if(!inimigo) {
+            player.move(-speed, 0);
+            player.use(sprite("playerL"));
+        }
+    })
+    onKeyDown("a", () => {
+        if(!inimigo) {
+            player.move(-speed, 0);
+            player.use(sprite("playerL"));
+        }
+    })
+
+    onKeyDown("right", () => {
+        if(!inimigo) {
+            player.move(speed, 0);
+            player.use(sprite("playerR"));
+        }
+    })
+    onKeyDown("d", () => {
+        if(!inimigo) {
+            player.move(speed, 0);
+            player.use(sprite("playerR"));
+        }
+    })
+
+    onKeyDown("up", () => {
+        if(!inimigo) {
+            player.move(0, -speed);
+            player.use(sprite("playerU"));
+        }
+    })
+    onKeyDown("w", () => {
+        if(!inimigo) {
+            player.move(0, -speed);
+            player.use(sprite("playerU"));
+        }
+    })
+
+    onKeyDown("down", () => {
+        if(!inimigo) {
+            player.move(0, speed);
+            player.use(sprite("playerD"));
+        }
+    })
+    onKeyDown("s", () => {
+        if(!inimigo) {
+            player.move(0, speed);
+            player.use(sprite("playerD"));
+        }
+    })
+
+    let crystal = false;
+    let inimigo = false;
+
+    onClick("botao", () => {
+        if(parteTutorial == 1) {
+            textLegenda.text = "Use as teclas WASD (Ou as Setas) para mover o jogador";
+        }
+        if(parteTutorial == 2) {
+            textLegenda.text = "Colete todos os cristais para abrir o portal e fugir do gelo";
+            add([
+                "crystal",
+                sprite("greenCrystal"),
+                pos(totalWidth * 0.45, totalHeight * 0.5),
+                area(),
+            ])
+        }
+        if(parteTutorial == 3) {
+            if(crystal == true) {
+                textLegenda.text = "Tenha muito cuidado ao se deparar com os inimigos"
+                inimigo = true;
+                const slime = add([
+                    "slime",
+                    sprite("redSlimeD"),
+                    pos(totalWidth * 0.8, player.pos.y),
+                    area(),
+                    solid(),
+                    scale(1.5),
+                    move(0, -300)
+                ])
+            } else {
+                parteTutorial--;
+            }
+        }
+        if(parteTutorial == 4) {
+            inimigo = false;
+            destroyAll("slime")
+            textLegenda.text = "Salve o mundo do gelo!\n\nE lembre-se: Os slimes devem estar vindo de algum lugar!"
+        }
+        if(parteTutorial == 5) {
+            localStorage.setItem("nivel", "nivel1")
+            go("nivel1");
+        }
+        parteTutorial++;
+    })
+
+    player.onCollide("crystal", () => {
+        destroyAll("crystal");
+        crystal = true;
+    })
+
+    player.onCollide("slime", () => {
+        destroyAll("player");
+        shake(70)
+    })
+})
 
 scene("nivel1", () => {
 
@@ -694,30 +888,38 @@ scene("nivel1", () => {
 
     onKeyDown("left", () => {
         player.move(-speed, 0);
+        player.use(sprite("playerL"));
     })
     onKeyDown("a", () => {
         player.move(-speed, 0);
+        player.use(sprite("playerL"));
     })
 
     onKeyDown("right", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"));
     })
     onKeyDown("d", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"));
     })
 
     onKeyDown("up", () => {
         player.move(0, -speed);
+        player.use(sprite("playerU"));
     })
     onKeyDown("w", () => {
         player.move(0, -speed);
+        player.use(sprite("playerU"));
     })
 
     onKeyDown("down", () => {
         player.move(0, speed);
+        player.use(sprite("playerD"));
     })
     onKeyDown("s", () => {
         player.move(0, speed);
+        player.use(sprite("playerD"));
     })
 
     let botaoRefazer;
@@ -1026,30 +1228,38 @@ scene("nivel2", () => {
 
     onKeyDown("left", () => {
         player.move(-speed, 0);
+        player.use(sprite("playerL"));
     })
     onKeyDown("a", () => {
         player.move(-speed, 0);
+        player.use(sprite("playerL"));
     })
 
     onKeyDown("right", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"));
     })
     onKeyDown("d", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"));
     })
 
     onKeyDown("up", () => {
         player.move(0, -speed);
+        player.use(sprite("playerU"));
     })
     onKeyDown("w", () => {
         player.move(0, -speed);
+        player.use(sprite("playerU"));
     })
 
     onKeyDown("down", () => {
         player.move(0, speed);
+        player.use(sprite("playerD"));
     })
     onKeyDown("s", () => {
         player.move(0, speed);
+        player.use(sprite("playerD"));
     })
 
     //R1
@@ -1710,30 +1920,38 @@ scene("boss1", () => {
 
     onKeyDown("left", () => {
         player.move(-speed, 0);
+        player.use(sprite("playerL"));
     })
     onKeyDown("a", () => {
         player.move(-speed, 0);
+        player.use(sprite("playerL"));
     })
 
     onKeyDown("right", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"));
     })
     onKeyDown("d", () => {
         player.move(speed, 0);
+        player.use(sprite("playerR"));
     })
 
     onKeyDown("up", () => {
         player.move(0, -speed);
+        player.use(sprite("playerU"));
     })
     onKeyDown("w", () => {
         player.move(0, -speed);
+        player.use(sprite("playerU"));
     })
 
     onKeyDown("down", () => {
         player.move(0, speed);
+        player.use(sprite("playerD"));
     })
     onKeyDown("s", () => {
         player.move(0, speed);
+        player.use(sprite("playerD"));
     })
 
     const queenSlime = add([
@@ -2179,7 +2397,10 @@ scene("boss1", () => {
     criarEspinhos();
 })
 
-if (localStorage.getItem("nivel") == "nivel1" || !localStorage.getItem("nivel")) {
+if(!localStorage.getItem("nivel")) {
+    go('tutorial');
+}
+if (localStorage.getItem("nivel") == "nivel1") {
     go("nivel1");
 }
 if (localStorage.getItem("nivel") == "nivel2") {
