@@ -1113,7 +1113,7 @@ scene("nivel2", () => {
     ], "2")
 
     async function backgroundFase() {
-        let bgImage = await loadSprite("background", "./assets/background2.jfif");
+        let bgImage = await loadSprite("background", "./assets/imgFundoGelo.JPG");
     
         let background = add([
             sprite("background"),
