@@ -34,6 +34,13 @@ loadSprite("slimeBravo", "/sprites/slimeBravo.png");
 
 let scoreSeg = 0;
 let scoreMin = 0;
+let timer1 = false;
+let timer2 = false;
+let timer3 = false;
+
+if(!localStorage.getItem("lista")) {
+    localStorage.setItem("lista", JSON.stringify({lista:[{nome: "Vieira", tempo: 178}]}))
+}
 
 
 async function backgroundFase() {
@@ -798,6 +805,7 @@ scene("nivel1", () => {
     player.onCollide("portal", () => {
         if (gCrystal && rCrystal && bCrystal) {
             localStorage.setItem("nivel", "nivel2");
+            timer1 = false;
             go("nivel2");
         }
     })
@@ -851,11 +859,14 @@ scene("nivel1", () => {
 
         scoreMinutos.text = scoreMin;
         scoreSegundos.text = scoreSeg;
-        setTimeout(() => {
-            timerPontuacao();
-        }, 1000);
+        if(timer1) {
+            setTimeout(() => {
+                timerPontuacao();
+            }, 1000);
+        }
     }
 
+    timer1 = true;
     timerPontuacao();
 
 })
@@ -894,6 +905,26 @@ scene("nivel2", () => {
         "3"
     ], "2")
 
+    async function backgroundFase() {
+        let bgImage = await loadSprite("background", "./assets/background2.jfif");
+    
+        let background = add([
+            sprite("background"),
+            pos(width() / 2, height() / 2),
+            origin("center"),
+            scale(1),
+            fixed(),
+            layer("1")
+    
+        ]);
+    
+        background.scaleTo(Math.max(
+            totalWidth / bgImage.tex.width,
+            totalHeight / bgImage.tex.height
+        ));
+    }
+    backgroundFase();
+
     const scoreMinutos = add([
         text(scoreMin, {
             size: 15
@@ -926,8 +957,7 @@ scene("nivel2", () => {
         layer("3")
     ]);
 
-    loop(1, () => {
-
+    function timerPontuacao() {
         if (morto == false) {
             if (scoreSeg < 60) {
                 scoreSeg++;
@@ -936,9 +966,18 @@ scene("nivel2", () => {
                 scoreMin++;
             }
         }
+
         scoreMinutos.text = scoreMin;
         scoreSegundos.text = scoreSeg;
-    });
+        if(timer2) {
+            setTimeout(() => {
+                timerPontuacao();
+            }, 1000);
+        }
+    }
+
+    timer2 = true;
+    timerPontuacao();
 
     const borderTop = add([
         "wall",
@@ -1526,6 +1565,7 @@ scene("nivel2", () => {
     player.onCollide("portal", () => {
         if (gCrystal == 2 && rCrystal == 2 && bCrystal == 2) {
             localStorage.setItem("nivel", "boss1");
+            timer2 = false;
             go("boss1");
         }
     })
@@ -1601,8 +1641,7 @@ scene("boss1", () => {
         layer("3")
     ]);
 
-    loop(1, () => {
-
+    function timerPontuacao() {
         if (morto == false) {
             if (scoreSeg < 60) {
                 scoreSeg++;
@@ -1611,9 +1650,18 @@ scene("boss1", () => {
                 scoreMin++;
             }
         }
+
         scoreMinutos.text = scoreMin;
         scoreSegundos.text = scoreSeg;
-    });
+        if(timer3) {
+            setTimeout(() => {
+                timerPontuacao();
+            }, 1000);
+        }
+    }
+
+    timer3 = true;
+    timerPontuacao();
 
     const borderTop = add([
         "wall",
@@ -1694,7 +1742,7 @@ scene("boss1", () => {
         pos(totalWidth * 0.44, totalHeight * 0.4),
         area(),
         scale(3),
-        health(0)
+        health(5)
     ])
 
     function criarEspinhos() {
@@ -2055,6 +2103,7 @@ scene("boss1", () => {
 
     function vitoria() {
         barraVida1.color = rgb(211, 211, 211);
+        timer3 = false;
         add([
             text("Vitoria!"),
             pos(totalWidth * 0.44, totalHeight * 0.36),
@@ -2078,7 +2127,7 @@ scene("boss1", () => {
     }
 
     onClick("botaoContinuar", () => {
-        // localStorage.removeItem("nivel");
+        localStorage.removeItem("nivel");
         let lista = JSON.parse(localStorage.getItem("lista")) || {lista: []};
         lista.lista.push({nome: localStorage.getItem("jogador"), tempo: (scoreMin * 60 + scoreSeg)});
         localStorage.setItem("lista", JSON.stringify(lista));
