@@ -7,7 +7,7 @@
 async function jogar() {
     let nomeJogador = document.querySelector("#nomeUsuario").value;
     if (nomeJogador) {
-        window.location.href = "http://localhost:3000/mundo1"
+        window.location.href = "https://freeze-day.vercel.app/mundo1"
         localStorage.setItem("jogador", nomeJogador);
     } else {
         alert("Digite um nome de jogador!")
@@ -15,7 +15,7 @@ async function jogar() {
 }
 
 function ranking(){
-    window.location.href = "http://localhost:3000/rankings";
+    window.location.href = "https://freeze-day.vercel.app/rankings";
 }
 
 if(!localStorage.getItem("lista")) {

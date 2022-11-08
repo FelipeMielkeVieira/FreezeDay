@@ -70,7 +70,7 @@ inserirRegistro();
 
 
 function botaoVoltar(){
-    window.location = "http://localhost:3000";
+    window.location = "https://freeze-day.vercel.app/";
 }
 
 

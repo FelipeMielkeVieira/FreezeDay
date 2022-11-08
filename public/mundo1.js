@@ -2373,7 +2373,7 @@ scene("boss1", () => {
         let lista = JSON.parse(localStorage.getItem("lista")) || {lista: []};
         lista.lista.push({nome: localStorage.getItem("jogador"), tempo: (scoreMin * 60 + scoreSeg)});
         localStorage.setItem("lista", JSON.stringify(lista));
-        window.location = "http://localhost:3000";
+        window.location = "https://freeze-day.vercel.app/";
     })
 
     queenSlime.on("death", () => {
@@ -2435,5 +2435,5 @@ if (localStorage.getItem("nivel") == "boss1") {
     console.log(JSON.parse(localStorage.getItem("lista")))
 }
 if(localStorage.getItem("nivel") == "nivel4") {
-    window.location.href = "http://localhost:3000/mundo2";
+    window.location.href = "https://freeze-day.vercel.app/mundo2";
 }
