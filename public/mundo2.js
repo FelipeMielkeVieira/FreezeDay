@@ -11,20 +11,20 @@ kaboom({
     background: [255, 255, 255]
 });
 
-loadSprite("playerD", "/sprites/playerD.png");
-loadSprite("playerR", "/sprites/playerR.png");
-loadSprite("picoleAzul", "/sprites/picoleAzul.png");
-loadSprite("picoleVermelho", "/sprites/picoleVermelho.png");
-loadSprite("picoleVerde", "/sprites/picoleVerde.png");
+loadSprite("playerD", __dirname + "/sprites/playerD.png");
+loadSprite("playerR", __dirname + "/sprites/playerR.png");
+loadSprite("picoleAzul", __dirname + "/sprites/picoleAzul.png");
+loadSprite("picoleVermelho", __dirname + "/sprites/picoleVermelho.png");
+loadSprite("picoleVerde", __dirname + "/sprites/picoleVerde.png");
 
-loadSprite("closedPortal", "/sprites/closedPortal.png");
-loadSprite("openPortal", "/sprites/openPortal.png");
+loadSprite("closedPortal", __dirname + "/sprites/closedPortal.png");
+loadSprite("openPortal", __dirname + "/sprites/openPortal.png");
 
-loadSprite("redCrystal", "/sprites/redCrystal.png");
-loadSprite("greenCrystal", "/sprites/greenCrystal.png");
-loadSprite("blueCrystal", "/sprites/blueCrystal.png");
+loadSprite("redCrystal", __dirname + "/sprites/redCrystal.png");
+loadSprite("greenCrystal", __dirname + "/sprites/greenCrystal.png");
+loadSprite("blueCrystal", __dirname + "/sprites/blueCrystal.png");
 
-loadSprite("agua", "/sprites/agua.png");
+loadSprite("agua", __dirname + "/sprites/agua.png");
 
 scene("nivel4", () => {
 
