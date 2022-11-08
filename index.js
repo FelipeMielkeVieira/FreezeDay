@@ -4,7 +4,7 @@ const crud = require("./public/crud");
 
 const path = require("path");
 
-app.use(express.static(__dirname + "/public"))
+app.use(express.static("public"))
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/home.html"));

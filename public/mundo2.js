@@ -11,20 +11,20 @@ kaboom({
     background: [255, 255, 255]
 });
 
-loadSprite("playerD", "https://freeze-day.vercel.app" + "/sprites/playerD.png");
-loadSprite("playerR", "https://freeze-day.vercel.app" + "/sprites/playerR.png");
-loadSprite("picoleAzul", "https://freeze-day.vercel.app" + "/sprites/picoleAzul.png");
-loadSprite("picoleVermelho", "https://freeze-day.vercel.app" + "/sprites/picoleVermelho.png");
-loadSprite("picoleVerde", "https://freeze-day.vercel.app" + "/sprites/picoleVerde.png");
+loadSprite("playerD", "/sprites/playerD.png");
+loadSprite("playerR", "/sprites/playerR.png");
+loadSprite("picoleAzul", "/sprites/picoleAzul.png");
+loadSprite("picoleVermelho", "/sprites/picoleVermelho.png");
+loadSprite("picoleVerde", "/sprites/picoleVerde.png");
 
-loadSprite("closedPortal", "https://freeze-day.vercel.app" + "/sprites/closedPortal.png");
-loadSprite("openPortal", "https://freeze-day.vercel.app" + "/sprites/openPortal.png");
+loadSprite("closedPortal", "/sprites/closedPortal.png");
+loadSprite("openPortal", "/sprites/openPortal.png");
 
-loadSprite("redCrystal", "https://freeze-day.vercel.app" + "/sprites/redCrystal.png");
-loadSprite("greenCrystal", "https://freeze-day.vercel.app" + "/sprites/greenCrystal.png");
-loadSprite("blueCrystal", "https://freeze-day.vercel.app" + "/sprites/blueCrystal.png");
+loadSprite("redCrystal", "/sprites/redCrystal.png");
+loadSprite("greenCrystal", "/sprites/greenCrystal.png");
+loadSprite("blueCrystal", "/sprites/blueCrystal.png");
 
-loadSprite("agua", "https://freeze-day.vercel.app" + "/sprites/agua.png");
+loadSprite("agua", "/sprites/agua.png");
 
 scene("nivel4", () => {
 

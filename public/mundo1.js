@@ -12,31 +12,31 @@ kaboom({
     background: [255, 255, 255]
 });
 
-loadSprite("playerD", "https://freeze-day.vercel.app" + "/sprites/playerD.png");
-loadSprite("playerR", "https://freeze-day.vercel.app" + "/sprites/playerR.png");
-loadSprite("playerL", "https://freeze-day.vercel.app" + "/sprites/playerL.png");
-loadSprite("playerU", "https://freeze-day.vercel.app" + "/sprites/playerU.png");
+loadSprite("playerD", "/sprites/playerD.png");
+loadSprite("playerR", "/sprites/playerR.png");
+loadSprite("playerL", "/sprites/playerL.png");
+loadSprite("playerU", "/sprites/playerU.png");
 
-loadSprite("redSlimeD", "https://freeze-day.vercel.app" + "/sprites/redSlimeD.png");
-loadSprite("greenSlimeD", "https://freeze-day.vercel.app" + "/sprites/greenSlimeD.png");
-loadSprite("blueSlimeD", "https://freeze-day.vercel.app" + "/sprites/blueSlimeD.png");
+loadSprite("redSlimeD", "/sprites/redSlimeD.png");
+loadSprite("greenSlimeD", "/sprites/greenSlimeD.png");
+loadSprite("blueSlimeD", "/sprites/blueSlimeD.png");
 
-loadSprite("closedPortal", "https://freeze-day.vercel.app" + "/sprites/closedPortal.png");
-loadSprite("openPortal", "https://freeze-day.vercel.app" + "/sprites/openPortal.png");
+loadSprite("closedPortal", "/sprites/closedPortal.png");
+loadSprite("openPortal", "/sprites/openPortal.png");
 
-loadSprite("redCrystal", "https://freeze-day.vercel.app" + "/sprites/redCrystal.png");
-loadSprite("greenCrystal", "https://freeze-day.vercel.app" + "/sprites/greenCrystal.png");
-loadSprite("blueCrystal", "https://freeze-day.vercel.app" + "/sprites/blueCrystal.png");
+loadSprite("redCrystal", "/sprites/redCrystal.png");
+loadSprite("greenCrystal", "/sprites/greenCrystal.png");
+loadSprite("blueCrystal", "/sprites/blueCrystal.png");
 
-loadSprite("queenSlime1", "https://freeze-day.vercel.app" + "/sprites/queenSlime.png");
-loadSprite("queenSlime2", "https://freeze-day.vercel.app" + "/sprites/queenSlime2.png");
-loadSprite("spike", "https://freeze-day.vercel.app" + "/sprites/spike.png");
-loadSprite("halfSpike", "https://freeze-day.vercel.app" + "/sprites/halfSpike.png");
+loadSprite("queenSlime1", "/sprites/queenSlime.png");
+loadSprite("queenSlime2", "/sprites/queenSlime2.png");
+loadSprite("spike", "/sprites/spike.png");
+loadSprite("halfSpike", "/sprites/halfSpike.png");
 
-loadSprite("slimeBravo", "https://freeze-day.vercel.app" + "/sprites/slimeBravo.png");
+loadSprite("slimeBravo", "/sprites/slimeBravo.png");
 
-loadSound("musica1", "https://freeze-day.vercel.app" + "/audio/audio1.mp3");
-loadSound("musica2", "https://freeze-day.vercel.app" + "/audio/audio2.mp3");
+loadSound("musica1", "/audio/audio1.mp3");
+loadSound("musica2", "/audio/audio2.mp3");
 
 let scoreSeg = 0;
 let scoreMin = 0;
@@ -2373,7 +2373,7 @@ scene("boss1", () => {
         let lista = JSON.parse(localStorage.getItem("lista")) || {lista: []};
         lista.lista.push({nome: localStorage.getItem("jogador"), tempo: (scoreMin * 60 + scoreSeg)});
         localStorage.setItem("lista", JSON.stringify(lista));
-        window.location = "https://freeze-day.vercel.app/";
+        window.location = "http://localhost:3000/";
     })
 
     queenSlime.on("death", () => {
@@ -2435,5 +2435,5 @@ if (localStorage.getItem("nivel") == "boss1") {
     console.log(JSON.parse(localStorage.getItem("lista")))
 }
 if(localStorage.getItem("nivel") == "nivel4") {
-    window.location.href = "https://freeze-day.vercel.app/mundo2";
+    window.location.href = "http://localhost:3000/mundo2";
 }
